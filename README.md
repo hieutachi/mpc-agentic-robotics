@@ -64,9 +64,12 @@ mpc-agentic-robotics/
 
 ## Tài liệu
 
-- **[LEARNING_PATH.md](LEARNING_PATH.md)** — Đường dẫn tài liệu học theo tuần (bắt đầu từ đây)
+- **[SELF_STUDY.md](SELF_STUDY.md)** — Tài liệu tự học chi tiết (8 phần, sơ đồ ASCII, công thức toán) ⭐
+- **[LEARNING_PATH.md](LEARNING_PATH.md)** — Đường dẫn tài liệu học theo tuần
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** — Kiến trúc hệ thống và sơ đồ
 - **[PROJECT_CHECKLIST.md](PROJECT_CHECKLIST.md)** — Checklist công việc cho nhóm
+- **[docs/concepts.md](docs/concepts.md)** — Kiến thức nền tảng (tối ưu lồi, ma trận, Jacobian)
+- **[docs/glossary.md](docs/glossary.md)** — Bảng thuật ngữ A-Z
 
 ## Phân công nhóm 5 người
 
