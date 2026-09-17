@@ -65,6 +65,7 @@ mpc-agentic-robotics/
 ## Tài liệu
 
 - **[SELF_STUDY.md](SELF_STUDY.md)** — Tài liệu tự học chi tiết (8 phần, sơ đồ ASCII, công thức toán) ⭐
+- **[SELF_STUDY_EXAMPLE.md](SELF_STUDY_EXAMPLE.md)** — Ví dụ xuyên suốt với số liệu cụ thể ⭐⭐
 - **[LEARNING_PATH.md](LEARNING_PATH.md)** — Đường dẫn tài liệu học theo tuần
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** — Kiến trúc hệ thống và sơ đồ
 - **[PROJECT_CHECKLIST.md](PROJECT_CHECKLIST.md)** — Checklist công việc cho nhóm
