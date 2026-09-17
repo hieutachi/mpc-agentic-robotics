@@ -1,0 +1,11 @@
+# MPC Baseline Configuration
+# ===========================
+dt: 0.1                    # Time step (seconds)
+horizon: 10                # Prediction horizon (steps)
+Q: [1.0, 1.0, 0.5, 0.1]   # State cost: x, y, yaw, v
+R: [0.1, 0.1]              # Control cost: steer, accel
+max_steer: 0.5             # Max steering angle (rad)
+max_accel: 2.0             # Max acceleration (m/s^2)
+max_speed: 3.0             # Max speed (m/s)
+vehicle_length: 0.3        # Wheelbase (m)
+num_iterations: 3          # Iterative linearization steps

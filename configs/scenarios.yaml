@@ -1,0 +1,23 @@
+# Experiment Scenarios
+# =====================
+
+basic_circle:
+  map: "maps/empty_20x20.yaml"
+  start: [2, 2]
+  goal: [17, 17]
+  description: "Simple straight-line path on empty map"
+  mpc_config: "configs/mpc_baseline.yaml"
+
+corridor:
+  map: "maps/corridor_30x10.yaml"
+  start: [1, 1]
+  goal: [28, 8]
+  description: "Navigation through a narrow corridor"
+  mpc_config: "configs/mpc_baseline.yaml"
+
+obstacles:
+  map: "maps/obstacles_20x20.yaml"
+  start: [1, 1]
+  goal: [18, 18]
+  description: "Path planning around multiple obstacles"
+  mpc_config: "configs/mpc_baseline.yaml"

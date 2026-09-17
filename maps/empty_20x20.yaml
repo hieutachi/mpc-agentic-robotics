@@ -1,0 +1,7 @@
+# Empty 20x20 Grid Map
+name: "empty_20x20"
+width: 20
+height: 20
+resolution: 0.5   # meter per cell
+origin: [0, 0]
+obstacles: []      # No obstacles
