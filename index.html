@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MPC Robotics — Flow · Công việc · Gap</title>
+<style>
+:root{--ink:#0f172a;--muted:#64748b;--accent:#2563eb;--violet:#7c3aed;--ok:#16a34a;--warn:#d97706;--bad:#dc2626;--border:#e2e8f0;--bg:#f1f5f9}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.hero{background:linear-gradient(135deg,#0f172a,#1e3a8a 60%,#7c3aed);color:#fff;padding:44px 20px 36px;text-align:center}
+.hero h1{font-size:1.7rem;font-weight:800}
+.hero p{color:#cbd5e1;max-width:720px;margin:10px auto 0}
+.hero .cta{margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta a{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;padding:10px 22px;border-radius:999px;font-weight:600;transition:.2s}
+.cta a:hover{background:#fff;color:#1e3a8a}
+main{max-width:1080px;margin:0 auto;padding:36px 20px 60px}
+section{margin-bottom:70px;scroll-margin-top:16px}
+.sec-head{text-align:center;margin-bottom:28px}
+.sec-head h2{font-size:1.5rem;font-weight:800}
+.sec-head p{color:var(--muted);max-width:640px;margin:6px auto 0}
+.flow{display:flex;flex-direction:column;align-items:center;gap:0}
+.fcard{width:100%;max-width:520px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 18px;box-shadow:0 1px 4px rgba(15,23,42,.06);position:relative;transition:.2s}
+.fcard:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(37,99,235,.15);border-color:var(--accent)}
+.fcard .ic{font-size:1.5rem}
+.fcard h3{font-size:1.02rem;margin:4px 0 2px}
+.fcard p{font-size:.86rem;color:var(--muted)}
+.fcard .file{display:inline-block;margin-top:8px;font-family:Consolas,monospace;font-size:.76rem;background:#eff6ff;color:#1d4ed8;border-radius:6px;padding:2px 8px}
+.own{position:absolute;top:12px;right:12px;font-size:.7rem;font-weight:700;padding:2px 10px;border-radius:999px;color:#fff}
+.o1{background:#0ea5e9}.o2{background:#22c55e}.o3{background:#f97316}.o4{background:#8b5cf6}.o5{background:#ec4899}
+.farrow{text-align:center;font-size:1.3rem;color:#94a3b8;padding:2px 0;line-height:1}
+.fsplit{max-width:520px;text-align:center;color:var(--muted);font-size:.83rem;margin:4px 0}
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.tab-btn{border:2px solid var(--border);background:#fff;border-radius:999px;padding:8px 18px;font-weight:700;font-size:.9rem;cursor:pointer;color:#475569;transition:.15s}
+.tab-btn:hover{border-color:var(--accent)}
+.tab-btn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.member{display:none;background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;max-width:860px;margin:0 auto;box-shadow:0 2px 8px rgba(15,23,42,.06)}
+.member.on{display:block}
+.m-head{padding:20px 26px;color:#fff}
+.m-head h3{font-size:1.2rem}
+.m-head p{font-size:.9rem;opacity:.92}
+.m-body{padding:20px 26px}
+.m-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:700px){.m-grid{grid-template-columns:1fr}}
+.m-box h4{font-size:.78rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px}
+.m-box ul{list-style:none}
+.m-box li{padding:6px 0 6px 26px;position:relative;font-size:.92rem;border-bottom:1px dashed var(--border)}
+.m-box li:last-child{border-bottom:none}
+.job li::before{content:'▢';position:absolute;left:2px;color:var(--accent);font-weight:700}
+.done li::before{content:'✓';position:absolute;left:2px;color:var(--ok);font-weight:700}
+.file-li li::before{content:'📄';position:absolute;left:2px;font-size:.8rem}
+.m-box code{background:#f1f5f9;border-radius:5px;padding:1px 6px;font-family:Consolas,monospace;font-size:.84em;color:#be185d}
+/* GAP */
+.gap-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.gap-grid{grid-template-columns:1fr}}
+.gap{background:#fff;border:1px solid var(--border);border-left:6px solid;border-radius:12px;padding:16px 18px;box-shadow:0 1px 4px rgba(15,23,42,.05)}
+.gap.p0{border-left-color:var(--bad)}
+.gap.p1{border-left-color:var(--warn)}
+.gap.p2{border-left-color:#94a3b8}
+.gap .g-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pri{font-size:.72rem;font-weight:800;color:#fff;border-radius:6px;padding:2px 9px}
+.pri.p0{background:var(--bad)}.pri.p1{background:var(--warn)}.pri.p2{background:#94a3b8}
+.gap h3{font-size:.98rem;flex:1}
+.gap .meta{font-size:.78rem;color:var(--muted);margin:6px 0 8px}
+.gap details{margin-top:6px}
+.gap summary{cursor:pointer;font-size:.86rem;font-weight:700;color:var(--accent)}
+.gap details p,.gap details ol{font-size:.86rem;color:#334155;margin:8px 0 0 18px}
+/* TIMELINE */
+.tl{position:relative;max-width:760px;margin:0 auto;padding-left:34px}
+.tl::before{content:'';position:absolute;left:12px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--accent),var(--violet));border-radius:3px}
+.tl-item{position:relative;margin-bottom:22px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 18px}
+.tl-item::before{content:'';position:absolute;left:-29px;top:18px;width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid var(--accent)}
+.tl-item .when{font-size:.72rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:1px}
+.tl-item h3{font-size:1rem;margin:2px 0 6px}
+.tl-item li{font-size:.88rem;color:#334155;margin:3px 0 3px 18px}
+/* QUICK */
+.quick{background:#0f172a;border-radius:14px;padding:20px 24px;max-width:760px;margin:0 auto}
+.quick h3{color:#fff;font-size:1rem;margin-bottom:10px}
+.quick pre{color:#e2e8f0;font-family:Consolas,monospace;font-size:.86rem;line-height:1.7;overflow-x:auto}
+.quick .c{color:#64748b}
+footer{background:var(--ink);color:#94a3b8;text-align:center;padding:22px;font-size:.85rem}
+footer a{color:#93c5fd}
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1>🤖 MPC Agentic Robotics — Board</h1>
+  <p>Trang điều hành cho nhóm 5 người: <b>hệ thống chạy thế nào</b> (FLOW) → <b>ai làm gì</b> (JOB) → <b>thiếu gì</b> (GAP) → <b>làm thế nào</b> (HOW) → <b>chạy bài nào trước</b> (PLAN).</p>
+  <div class="cta">
+    <a href="#flow">🔀 Flow</a><a href="#jobs">👥 Công việc</a><a href="#gaps">🕳️ Gap</a><a href="#plan">📅 Lộ trình</a><a href="#quick">⌨️ Lệnh</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ FLOW ============ -->
+<section id="flow">
+<div class="sec-head">
+  <h2>🔀 FLOW — Hệ thống chạy thế nào</h2>
+  <p>Dữ liệu chảy từ trên xuống. Mỗi thẻ = 1 bước, badge màu = người phụ trách (xem mục Công việc).</p>
+</div>
+<div class="flow">
+
+  <div class="fcard">
+    <span class="own o2">M2</span>
+    <div class="ic">🗺️</div>
+    <h3>1. INPUT — Bản đồ + Scenario</h3>
+    <p>Grid ô vuông (0.5 m/ô), vật cản, điểm start/goal. Quy ước: <b>(row, col)</b>, gốc trên-trái.</p>
+    <span class="file">maps/*.yaml · configs/scenarios.yaml</span>
+  </div>
+  <div class="farrow">▼</div>
+
+  <div class="fcard">
+    <span class="own o2">M2</span>
+    <div class="ic">🧭</div>
+    <h3>2. A* SEARCH</h3>
+    <p>Tìm đường ngắn nhất tránh vật cản: f = g + h, heuristic Euclidean, đi được 8 hướng.</p>
+    <span class="file">planner/astar.py</span>
+  </div>
+  <div class="farrow">▼</div>
+
+  <div class="fcard">
+    <span class="own o2">M2</span>
+    <div class="ic">〰️</div>
+    <h3>3. TRAJECTORY</h3>
+    <p>Đường ô vuông → quỹ đạo theo thời gian (t, x, y, yaw, v) + làm mượt.</p>
+    <span class="file">planner/trajectory.py</span>
+  </div>
+  <div class="farrow">▼</div>
+
+  <div class="fcard">
+    <span class="own o3">M3</span>
+    <div class="ic">🎮</div>
+    <h3>4. MPC CONTROLLER</h3>
+    <p>Mỗi bước: dự báo N bước → giải QP (CVXPY) → lấy [steer, accel] đầu tiên. Tuyến tính hóa 3 vòng.</p>
+    <span class="file">controller/iterative_mpc.py</span>
+  </div>
+  <div class="farrow">▼</div>
+
+  <div class="fcard">
+    <span class="own o4">M4</span>
+    <div class="ic">🚗</div>
+    <h3>5. SIMULATOR</h3>
+    <p>Cập nhật vị trí xe theo bicycle model, check va chạm, ghi log từng bước. Dừng khi cách đích &lt; 0.3 m.</p>
+    <span class="file">simulator/run_simulation.py</span>
+  </div>
+  <div class="farrow">▼</div>
+
+  <div class="fcard">
+    <span class="own o4">M4</span>
+    <div class="ic">📊</div>
+    <h3>6. METRICS</h3>
+    <p>Chấm điểm: RMSE, collision_count, min_obstacle_distance, smoothness → batch_results.csv.</p>
+    <span class="file">evaluation/metrics.py</span>
+  </div>
+  <div class="farrow">▼</div>
+
+  <div class="fsplit">⭕ vòng lặp — nếu chưa đạt mục tiêu (RMSE / collisions), quay lại bước 4 với config mới:</div>
+  <div class="farrow">↺</div>
+
+  <div class="fcard" style="border:2px dashed var(--violet)">
+    <span class="own o5">M5</span>
+    <div class="ic">🤖</div>
+    <h3>7. AI AGENT + MCP</h3>
+    <p>Agent đọc metrics → đề xuất config mới → MCP validate an toàn → chạy lại bước 4–6. Lặp đến khi đạt goal.</p>
+    <span class="file">agent/agent_loop.py · mcp_server/</span>
+  </div>
+
+</div>
+</section>
+
+<!-- ============ JOBS ============ -->
+<section id="jobs">
+<div class="sec-head">
+  <h2>👥 JOB — Ai làm gì</h2>
+  <p>Bấm từng người để xem: vùng phụ trách, việc đã xong, việc phải làm. Công việc bám trực tiếp vào GAP ở mục dưới.</p>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn on" data-t="m1">M1 · Pipeline</button>
+  <button class="tab-btn" data-t="m2">M2 · Planner</button>
+  <button class="tab-btn" data-t="m3">M3 · Control</button>
+  <button class="tab-btn" data-t="m4">M4 · Sim &amp; Eval</button>
+  <button class="tab-btn" data-t="m5">M5 · Agent &amp; MCP</button>
+</div>
+
+<!-- M1 -->
+<div class="member on" id="m1">
+  <div class="m-head" style="background:linear-gradient(135deg,#0ea5e9,#0369a1)">
+    <h3>M1 — Pipeline &amp; Repo (Nhóm trưởng)</h3>
+    <p>Sở hữu: <code style="background:rgba(255,255,255,.2);border-radius:5px;padding:1px 6px">run_pipeline.py · evaluation/batch_runner.py · requirements.txt</code> — đảm bảo cả hệ thống chạy trơn với mọi scenario.</p>
+  </div>
+  <div class="m-body"><div class="m-grid">
+    <div class="m-box"><h4>✓ Đã xong</h4><ul class="done">
+      <li>Pipeline end-to-end chạy được 3 scenario</li>
+      <li>Sửa agent bootstrap <code>sys.path</code></li>
+      <li>Sửa lỗi corridor goal out-of-bounds (với M2)</li>
+    </ul></div>
+    <div class="m-box"><h4>▢ Phải làm</h4><ul class="job">
+      <li><b>GAP-3:</b> batch_runner thêm try/except từng run + print(flush=True)</li>
+      <li><b>GAP-4:</b> thêm CLI <code>--config/--variant</code> vào run_pipeline (argparse)</li>
+      <li><b>GAP-7:</b> pin versions trong requirements.txt</li>
+      <li>Review + merge PR của cả nhóm, giữ gate: 45 test pass</li>
+    </ul></div>
+  </div></div>
+</div>
+
+<!-- M2 -->
+<div class="member" id="m2">
+  <div class="m-head" style="background:linear-gradient(135deg,#22c55e,#15803d)">
+    <h3>M2 — Path Planning</h3>
+    <p>Sở hữu: <code style="background:rgba(255,255,255,.2);border-radius:5px;padding:1px 6px">planner/ · maps/ · configs/scenarios.yaml</code> — robot tìm được đường đúng, nhanh, trên bản đồ hợp lệ.</p>
+  </div>
+  <div class="m-body"><div class="m-grid">
+    <div class="m-box"><h4>✓ Đã xong</h4><ul class="done">
+      <li>A* 8 hướng + trajectory nội suy + làm mượt</li>
+      <li>Sửa map corridor sai cú pháp YAML</li>
+    </ul></div>
+    <div class="m-box"><h4>▢ Phải làm</h4><ul class="job">
+      <li><b>GAP-2:</b> viết regression test load TẤT CẢ map trong scenarios.yaml (YAML sai phải fail ngay)</li>
+      <li>Tạo 2 map mới (L-shape, maze nhỏ) làm bộ thử thách</li>
+      <li><b>GAP-6:</b> cài Dijkstra (heuristic=0) so sánh độ dài đường + thời gian với A*</li>
+    </ul></div>
+  </div></div>
+</div>
+
+<!-- M3 -->
+<div class="member" id="m3">
+  <div class="m-head" style="background:linear-gradient(135deg,#f97316,#c2410c)">
+    <h3>M3 — MPC &amp; Control</h3>
+    <p>Sở hữu: <code style="background:rgba(255,255,255,.2);border-radius:5px;padding:1px 6px">controller/ · configs/mpc_*.yaml</code> — xe lái bám quỹ đạo chính xác và an toàn.</p>
+  </div>
+  <div class="m-body"><div class="m-grid">
+    <div class="m-box"><h4>✓ Đã xong</h4><ul class="done">
+      <li>Iterative MPC (3 vòng tuyến tính hóa) + P-fallback</li>
+      <li>4 variant: baseline / aggressive / conservative / precise</li>
+    </ul></div>
+    <div class="m-box"><h4>▢ Phải làm</h4><ul class="job">
+      <li><b>GAP-5:</b> vì sao aggressive tăng collision 24→67 ở corridor? Phân tích + thêm metric safety_margin</li>
+      <li>Quét horizon {3,5,10,15,20} → tìm "điểm ngọt" RMSE vs thời gian tính</li>
+      <li>Nâng cao: thêm ràng buộc khoảng cách vật cản vào QP (soft constraint)</li>
+    </ul></div>
+  </div></div>
+</div>
+
+<!-- M4 -->
+<div class="member" id="m4">
+  <div class="m-head" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)">
+    <h3>M4 — Simulator &amp; Evaluation</h3>
+    <p>Sở hữu: <code style="background:rgba(255,255,255,.2);border-radius:5px;padding:1px 6px">simulator/ · evaluation/</code> — số liệu ĐÚNG là nền của cả nghiên cứu.</p>
+  </div>
+  <div class="m-body"><div class="m-grid">
+    <div class="m-box"><h4>✓ Đã xong</h4><ul class="done">
+      <li>Vòng lặp sim 6 bước + va chạm + log CSV</li>
+      <li>7 metrics + batch 12 lượt + biểu đồ</li>
+    </ul></div>
+    <div class="m-box"><h4>▢ Phải làm</h4><ul class="job">
+      <li><b>GAP-1 (P0):</b> sửa collision metric false-positive — đổi ngưỡng 0.4 m tâm ô → khoảng cách tới biên ô</li>
+      <li>Thêm metric <code>safety_margin_violations</code></li>
+      <li>Chạy lại batch sau khi sửa → cập nhật mọi bảng/biểu đồ báo cáo</li>
+    </ul></div>
+  </div></div>
+</div>
+
+<!-- M5 -->
+<div class="member" id="m5">
+  <div class="m-head" style="background:linear-gradient(135deg,#ec4899,#be185d)">
+    <h3>M5 — AI Agent &amp; MCP</h3>
+    <p>Sở hữu: <code style="background:rgba(255,255,255,.2);border-radius:5px;padding:1px 6px">agent/ · mcp_server/</code> — tầng "trí tuệ" tự động tinh chỉnh.</p>
+  </div>
+  <div class="m-body"><div class="m-grid">
+    <div class="m-box"><h4>✓ Đã xong</h4><ul class="done">
+      <li>MCP server 5 tool + safety validation</li>
+      <li>Agent loop rule-based chạy demo đạt RMSE 0.0041</li>
+    </ul></div>
+    <div class="m-box"><h4>▢ Phải làm</h4><ul class="job">
+      <li>Thêm tool mới <code>get_scenario_info</code> (map dims, start, goal, obstacle count)</li>
+      <li><b>GAP-8:</b> nâng agent lên LLM thật — dùng <code>build_prompt()</code> sẵn có gọi LLM API thay cho rule-based</li>
+      <li>Viết doc 1 trang: flow goal → agent → tool → metrics kèm hình</li>
+    </ul></div>
+  </div></div>
+</div>
+</section>
+
+<!-- ============ GAPS ============ -->
+<section id="gaps">
+<div class="sec-head">
+  <h2>🕳️ GAP — Hệ thống đang thiếu gì</h2>
+  <p>Kết quả audit toàn bộ codebase. P0 = phải sửa trước khi lấy số liệu báo cáo · P1 = quan trọng · P2 = có thể chờ. Bấm "Cách làm" để xem hướng dẫn cụ thể.</p>
+</div>
+<div class="gap-grid">
+
+  <div class="gap p0">
+    <div class="g-top"><span class="pri p0">P0</span><h3>GAP-1 · Metric collision bị "ói" sai (false positive)</h3></div>
+    <div class="meta">👤 M4 · 📁 simulator/environment.py · ⏱ ~2h · Robot bị tính va chạm khi còn cách vật cản 0.35–0.40 m → mọi số collision trong corridor/obstacles đang bị thổi phồng</div>
+    <details><summary>Cách làm →</summary>
+      <p>Ngưỡng hiện tại: <code>radius 0.15 + resolution/2 0.25 = 0.4 m</code> tính tới <b>tâm ô</b> vật cản.</p>
+      <ol><li>Trong <code>check_collision()</code>: đổi so sánh khoảng cách tới <b>biên ô</b> gần nhất thay vì tâm ô (trừ thêm resolution/2).</li>
+      <li>Thêm metric mới <code>safety_margin_violations</code>: đếm số bước có min_obstacle_distance &lt; margin (cấu hình được, vd 0.3 m).</li>
+      <li>Chạy lại <code>--batch --save-results</code>, so sánh collision trước/sau — this là kết quả nghiên cứu đầu tiên của nhóm.</li></ol>
+    </details>
+  </div>
+
+  <div class="gap p0">
+    <div class="g-top"><span class="pri p0">P0</span><h3>GAP-2 · Không có test bảo vệ map/scenario</h3></div>
+    <div class="meta">👤 M2 · 📁 tests/ · ⏱ ~2h · 2 bug YAML (map corridor sai cú pháp, goal out-of-bounds) đã lọt qua vì không test nào load chúng</div>
+    <details><summary>Cách làm →</summary>
+      <ol><li>Tạo <code>tests/test_scenarios.py</code>: đọc <code>configs/scenarios.yaml</code>, với mỗi scenario: <code>yaml.safe_load</code> map tương ứng.</li>
+      <li>Assert: start/goal nằm trong biên grid, không đè lên vật cản, A* tìm được đường.</li>
+      <li>Chạy <code>pytest</code> — giờ bug YAML sẽ bị bắt ngay khi CI/test chạy.</li></ol>
+    </details>
+  </div>
+
+  <div class="gap p1">
+    <div class="g-top"><span class="pri p1">P1</span><h3>GAP-3 · Batch runner giòn + chạy im lặng</h3></div>
+    <div class="meta">👤 M1 · 📁 evaluation/batch_runner.py · ⏱ ~1h · 1 map hỏng từng làm sập cả 12 lượt batch; không có tiến trình in ra → không biết đang chạy đến đâu (~8–13s/run)</div>
+    <details><summary>Cách làm →</summary>
+      <ol><li>Bọc thân mỗi lượt chạy trong <code>try/except Exception</code> → ghi nhận dòng "FAILED" thay vì crash cả batch.</li>
+      <li>Trước mỗi run: <code>print(f"[{i}/{n}] {scenario} × {config} ...", flush=True)</code>.</li></ol>
+    </details>
+  </div>
+
+  <div class="gap p1">
+    <div class="g-top"><span class="pri p1">P1</span><h3>GAP-4 · CLI <code>--config/--variant</code> bị hứa nhưng chưa làm</h3></div>
+    <div class="meta">👤 M1 · 📁 run_pipeline.py · ⏱ ~1.5h · README và comment trong mpc_tuning.yaml đều nhắc flag này nhưng chạy sẽ báo lỗi unrecognized</div>
+    <details><summary>Cách làm →</summary>
+      <ol><li>Trong <code>run_pipeline.py</code> thêm 2 argument argparse: <code>--variant</code> (tên variant trong mpc_tuning.yaml, mặc định baseline) và <code>--config</code> (đường dẫn file YAML tùy chỉnh).</li>
+      <li>Load variant → merge đè lên baseline → chạy như thường.</li>
+      <li>Test: <code>python run_pipeline.py --scenario corridor --variant conservative</code>.</li></ol>
+    </details>
+  </div>
+
+  <div class="gap p1">
+    <div class="g-top"><span class="pri p1">P1</span><h3>GAP-5 · Variant aggressive làm collision tăng vọt</h3></div>
+    <div class="meta">👤 M3 · 📁 configs/mpc_tuning.yaml · ⏱ ~3h · Corridor: 24 → 67 collision khi đổi baseline → aggressive. Chưa hiểu rõ nguyên nhân = chưa có bài học</div>
+    <details><summary>Cách làm →</summary>
+      <ol><li>Chạy corridor với cả 2 variant, lưu <code>--save-log</code>.</li>
+      <li>Vẽ min_obstacle_distance theo thời gian — aggressive "cắt cua" sát hơn ở đoạn nào?</li>
+      <li>Kết luận: Q/R trade-off + đề xuất variant "aggressive_safe" (giảm max_speed, giữ Q cao). Đây là 1 kết luận NCKH hoàn chỉnh.</li></ol>
+    </details>
+  </div>
+
+  <div class="gap p2">
+    <div class="g-top"><span class="pri p2">P2</span><h3>GAP-6 · Chỉ có A* — chưa có planner để so sánh</h3></div>
+    <div class="meta">👤 M2 · 📁 planner/ · ⏱ ~4h · Nghiên cứu cần đối chứng (baseline vs phương pháp)</div>
+    <details><summary>Cách làm →</summary>
+      <ol><li>Dijkstra = A* với heuristic trả 0 — thêm cờ <code>heuristic="none"</code> vào <code>astar()</code>.</li>
+      <li>So sánh: số node mở rộng, thời gian, độ dài đường trên 3 map có sẵn.</li></ol>
+    </details>
+  </div>
+
+  <div class="gap p2">
+    <div class="g-top"><span class="pri p2">P2</span><h3>GAP-7 · requirements.txt chưa pin version</h3></div>
+    <div class="meta">👤 M1 · 📁 requirements.txt · ⏱ ~0.5h · Cài hôm nay và 6 tháng sau có thể ra 2 môi trường khác nhau</div>
+    <details><summary>Cách làm →</summary>
+      <ol><li>Chạy <code>pip freeze</code> trong venv → copy đúng version của numpy/cvxpy/scipy/pandas/pyyaml/matplotlib vào requirements.</li>
+      <li>Đổi <code>&gt;=</code> thành <code>==</code>.</li></ol>
+    </details>
+  </div>
+
+  <div class="gap p2">
+    <div class="g-top"><span class="pri p2">P2</span><h3>GAP-8 · Agent là rule-based, chưa phải AI thật</h3></div>
+    <div class="meta">👤 M5 · 📁 agent/prompts.py · ⏱ ~6h · <code>build_prompt()</code> đã sinh prompt hoàn chỉnh nhưng chưa ai gọi LLM với nó</div>
+    <details><summary>Cách làm →</summary>
+      <ol><li>Thêm hàm <code>suggest_with_llm(prompt)</code> gọi LLM API (OpenAI/Anthropic) parse JSON trả về.</li>
+      <li>Fallback về rule-based khi không có API key. MCP validation vẫn chặn mọi config nguy hiểm.</li>
+      <li>So sánh: agent rule-based vs LLM — bao nhiêu trial để đạt goal? → kết quả NCKH thứ 2.</li></ol>
+    </details>
+  </div>
+
+</div>
+</section>
+
+<!-- ============ PLAN ============ -->
+<section id="plan">
+<div class="sec-head">
+  <h2>📅 PLAN — Làm thế nào, bắt đầu từ đâu</h2>
+  <p>Tuần 1–8 học nền tảng (mỗi tuần 1 notebook + bài tập), tuần 9–12 giải GAP và viết báo cáo.</p>
+</div>
+<div class="tl">
+
+  <div class="tl-item"><div class="when">Ngày 1</div><h3>⚙️ Mỗi người cài máy</h3>
+    <ul><li>Clone repo → venv → <code>pip install -r requirements.txt</code></li>
+    <li>Chạy <code>pytest</code> đủ 45 passed → chạy <code>run_pipeline.py --scenario basic_circle</code></li></ul></div>
+
+  <div class="tl-item"><div class="when">Tuần 1–2</div><h3>🎮 M3 dẫn dắt — MPC cơ bản</h3>
+    <ul><li>Cả nhóm làm notebook 02 (mô hình xe + CVXPY)</li>
+    <li>Bài tập: đổi horizon 5/10/20 → ghi RMSE</li>
+    <li><b>M1 song song:</b> xong GAP-7 (pin versions)</li></ul></div>
+
+  <div class="tl-item"><div class="when">Tuần 3–4</div><h3>🧭 M2 dẫn dắt — A* + trajectory</h3>
+    <ul><li>Cả nhóm làm notebook 01 + 03, tự tạo 1 map mới</li>
+    <li><b>M2:</b> xong GAP-2 (regression test) — P0</li>
+    <li><b>M1 song song:</b> xong GAP-3 + GAP-4</li></ul></div>
+
+  <div class="tl-item"><div class="when">Tuần 5–6</div><h3>📊 M4 dẫn dắt — Simulation &amp; metrics</h3>
+    <ul><li>Cả nhóm notebook 04, phân tích batch_results.csv bằng pandas</li>
+    <li><b>M4:</b> xong GAP-1 (P0) → chạy lại toàn bộ batch → số liệu "sạch" cho báo cáo</li>
+    <li><b>M3 song song:</b> bắt đầu GAP-5 (phân tích aggressive)</li></ul></div>
+
+  <div class="tl-item"><div class="when">Tuần 7–8</div><h3>🤖 M5 dẫn dắt — Agent &amp; MCP</h3>
+    <ul><li>Cả nhóm notebook 05, hiểu vòng lặp goal→agent→tool→metrics</li>
+    <li><b>M5:</b> tool mới + GAP-8 (LLM agent)</li>
+    <li><b>M3:</b> hoàn thành GAP-5 + quét horizon</li></ul></div>
+
+  <div class="tl-item"><div class="when">Tuần 9–10</div><h3>🔬 Nghiên cứu sâu — mỗi người 1 GAP</h3>
+    <ul><li>M2: GAP-6 (Dijkstra so sánh) · M3: ràng buộc va chạm vào QP</li>
+    <li>M1: tổng hợp kết quả · M4: biểu đồ báo cáo · M5: demo agent LLM</li></ul></div>
+
+  <div class="tl-item"><div class="when">Tuần 11–12</div><h3>📝 Viết báo cáo + slide</h3>
+    <ul><li>3 kết quả chính: metric sửa sai (GAP-1) · trade-off Q/R (GAP-5) · agent LLM vs rule-based (GAP-8)</li>
+    <li>Demo live: pipeline + agent tự tinh chỉnh</li></ul></div>
+
+</div>
+</section>
+
+<!-- ============ QUICK ============ -->
+<section id="quick">
+<div class="sec-head">
+  <h2>⌨️ Lệnh cần thuộc</h2>
+</div>
+<div class="quick">
+<pre><span class="c"># setup 1 lần</span>
+git clone https://github.com/hieutachi/mpc-agentic-robotics.git
+cd mpc-agentic-robotics
+python -m venv venv && venv\Scripts\Activate.ps1   <span class="c"># Windows</span>
+pip install -r requirements.txt
+pytest planner controller simulator evaluation mcp_server -v   <span class="c"># 45 passed?</span>
+
+<span class="c"># chạy hàng ngày</span>
+python run_pipeline.py --scenario basic_circle --save-plot
+python run_pipeline.py --scenario corridor --save-log
+python run_pipeline.py --batch --save-results      <span class="c"># 12 lượt, vài phút</span>
+
+<span class="c"># agent</span>
+python agent/run_agent.py --scenario obstacles --max-trials 5
+
+<span class="c"># lỗi encoding Windows?</span>
+$env:PYTHONIOENCODING = "utf-8"</pre>
+</div>
+</section>
+
+</main>
+
+<footer>
+  MPC Agentic Robotics · NCKH 67HTTT2 ·
+  <a href="https://github.com/hieutachi/mpc-agentic-robotics">GitHub</a> · chi tiết kỹ thuật trong <a href="https://github.com/hieutachi/mpc-agentic-robotics#readme">README</a> và <code style="color:#93c5fd">docs/</code>
+</footer>
+
+<script>
+// Tabs thành viên
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
+    document.querySelectorAll('.member').forEach(m => m.classList.remove('on'));
+    btn.classList.add('on');
+    document.getElementById(btn.dataset.t).classList.add('on');
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
