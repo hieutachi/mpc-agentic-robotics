@@ -1,95 +1,95 @@
-# MPC Agentic Robotics
+﻿# MPC Agentic Robotics
 
-**Khung học Model Predictive Control cho robot di động trên Python, kết hợp AI Agent và MCP để tự động cấu hình, mô phỏng và đánh giá bài toán bám quỹ đạo, tìm đường và tránh vật cản.**
+**Khung há»c Model Predictive Control cho robot di Ä‘á»™ng trÃªn Python, káº¿t há»£p AI Agent vÃ  MCP Ä‘á»ƒ tá»± Ä‘á»™ng cáº¥u hÃ¬nh, mÃ´ phá»ng vÃ  Ä‘Ã¡nh giÃ¡ bÃ i toÃ¡n bÃ¡m quá»¹ Ä‘áº¡o, tÃ¬m Ä‘Æ°á»ng vÃ  trÃ¡nh váº­t cáº£n.**
 
-## Kết quả học tập
+## Káº¿t quáº£ há»c táº­p
 
-Sau khi hoàn thành repo này, sinh viên sẽ:
+Sau khi hoÃ n thÃ nh repo nÃ y, sinh viÃªn sáº½:
 
-- Hiểu nguyên lý MPC và cách triển khai bằng CVXPY
-- Biết cách tìm đường bằng A* và sinh trajectory tham chiếu
-- Xây dựng pipeline mô phỏng robot di động end-to-end
-- Đánh giá chất lượng điều khiển bằng metric có cấu trúc
-- Sử dụng AI Agent kết hợp MCP để tự động tối ưu cấu hình
+- Hiá»ƒu nguyÃªn lÃ½ MPC vÃ  cÃ¡ch triá»ƒn khai báº±ng CVXPY
+- Biáº¿t cÃ¡ch tÃ¬m Ä‘Æ°á»ng báº±ng A* vÃ  sinh trajectory tham chiáº¿u
+- XÃ¢y dá»±ng pipeline mÃ´ phá»ng robot di Ä‘á»™ng end-to-end
+- ÄÃ¡nh giÃ¡ cháº¥t lÆ°á»£ng Ä‘iá»u khiá»ƒn báº±ng metric cÃ³ cáº¥u trÃºc
+- Sá»­ dá»¥ng AI Agent káº¿t há»£p MCP Ä‘á»ƒ tá»± Ä‘á»™ng tá»‘i Æ°u cáº¥u hÃ¬nh
 
-## Cài đặt nhanh
+## CÃ i Ä‘áº·t nhanh
 
 ```bash
 # 1. Clone repo
 git clone <repo-url>
 cd mpc-agentic-robotics
 
-# 2. Tạo virtual environment
+# 2. Táº¡o virtual environment
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
 # venv\Scripts\activate   # Windows
 
-# 3. Cài dependencies
+# 3. CÃ i dependencies
 pip install -r requirements.txt
 
-# 4. Chạy demo
+# 4. Cháº¡y demo
 python run_pipeline.py --scenario basic_circle --save-plot
 ```
 
-## Chạy demo
+## Cháº¡y demo
 
 ```bash
 # Single scenario
 python run_pipeline.py --scenario basic_circle
 
-# All scenarios × all configs
+# All scenarios Ã— all configs
 python run_pipeline.py --batch --save-results
 
 # AI Agent
 python agent/run_agent.py --scenario basic_circle --max-trials 5
 ```
 
-## Cấu trúc repo
+## Cáº¥u trÃºc repo
 
 ```
 mpc-agentic-robotics/
-├── run_pipeline.py          # Script chạy end-to-end
-├── configs/                 # MPC config, scenarios
-├── maps/                    # Grid map mẫu
-├── planner/                 # A* + trajectory generation
-├── controller/              # Vehicle model + Iterative MPC (CVXPY)
-├── simulator/               # Environment + simulation loop
-├── evaluation/              # Metrics + batch runner + plots
-├── mcp_server/              # MCP tool server + safety validation
-├── agent/                   # AI Agent loop
-├── notebooks/               # 5 notebook hướng dẫn
-├── docs/                    # Tài liệu chi tiết
-└── data/                    # Logs, results
+â”œâ”€â”€ run_pipeline.py          # Script cháº¡y end-to-end
+â”œâ”€â”€ configs/                 # MPC config, scenarios
+â”œâ”€â”€ maps/                    # Grid map máº«u
+â”œâ”€â”€ planner/                 # A* + trajectory generation
+â”œâ”€â”€ controller/              # Vehicle model + Iterative MPC (CVXPY)
+â”œâ”€â”€ simulator/               # Environment + simulation loop
+â”œâ”€â”€ evaluation/              # Metrics + batch runner + plots
+â”œâ”€â”€ mcp_server/              # MCP tool server + safety validation
+â”œâ”€â”€ agent/                   # AI Agent loop
+â”œâ”€â”€ notebooks/               # 5 notebook hÆ°á»›ng dáº«n
+â”œâ”€â”€ docs/                    # TÃ i liá»‡u chi tiáº¿t
+â””â”€â”€ data/                    # Logs, results
 ```
 
-## Tài liệu
+## TÃ i liá»‡u
 
-- **[SELF_STUDY.md](SELF_STUDY.md)** — Tài liệu tự học chi tiết (8 phần, sơ đồ ASCII, công thức toán) ⭐
-- **[SELF_STUDY_EXAMPLE.md](SELF_STUDY_EXAMPLE.md)** — Ví dụ xuyên suốt với số liệu cụ thể ⭐⭐
-- **[LEARNING_PATH.md](LEARNING_PATH.md)** — Đường dẫn tài liệu học theo tuần
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** — Kiến trúc hệ thống và sơ đồ
-- **[PROJECT_CHECKLIST.md](PROJECT_CHECKLIST.md)** — Checklist công việc cho nhóm
-- **[docs/concepts.md](docs/concepts.md)** — Kiến thức nền tảng (tối ưu lồi, ma trận, Jacobian)
-- **[docs/glossary.md](docs/glossary.md)** — Bảng thuật ngữ A-Z
+- **[SELF_STUDY.md](SELF_STUDY.md)** â€” TÃ i liá»‡u tá»± há»c chi tiáº¿t (8 pháº§n, sÆ¡ Ä‘á»“ ASCII, cÃ´ng thá»©c toÃ¡n) â­
+- **[SELF_STUDY_EXAMPLE.md](SELF_STUDY_EXAMPLE.md)** â€” VÃ­ dá»¥ xuyÃªn suá»‘t vá»›i sá»‘ liá»‡u cá»¥ thá»ƒ â­â­
+- **[LEARNING_PATH.md](LEARNING_PATH.md)** â€” ÄÆ°á»ng dáº«n tÃ i liá»‡u há»c theo tuáº§n
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** â€” Kiáº¿n trÃºc há»‡ thá»‘ng vÃ  sÆ¡ Ä‘á»“
+- **[PROJECT_CHECKLIST.md](PROJECT_CHECKLIST.md)** â€” Checklist cÃ´ng viá»‡c cho nhÃ³m
+- **[docs/concepts.md](docs/concepts.md)** â€” Kiáº¿n thá»©c ná»n táº£ng (tá»‘i Æ°u lá»“i, ma tráº­n, Jacobian)
+- **[docs/glossary.md](docs/glossary.md)** â€” Báº£ng thuáº­t ngá»¯ A-Z
 
-## Phân công nhóm 5 người
+## PhÃ¢n cÃ´ng nhÃ³m 5 ngÆ°á»i
 
-| Thành viên | Vai trò | Module chính |
+| ThÃ nh viÃªn | Vai trÃ² | Module chÃ­nh |
 |---|---|---|
-| Member 1 | Nhóm trưởng / Tích hợp | `run_pipeline.py`, configs, docs |
+| Member 1 | NhÃ³m trÆ°á»Ÿng / TÃ­ch há»£p | `run_pipeline.py`, configs, docs |
 | Member 2 | Path Planning | `planner/` |
 | Member 3 | MPC & Control | `controller/` |
 | Member 4 | Simulator & Evaluation | `simulator/`, `evaluation/` |
 | Member 5 | AI Agent & MCP | `mcp_server/`, `agent/` |
 
-## Chạy tests
+## Cháº¡y tests
 
 ```bash
 pytest planner/ controller/ simulator/ evaluation/ mcp_server/ -v
 ```
 
-## Yêu cầu hệ thống
+## YÃªu cáº§u há»‡ thá»‘ng
 
 - Python 3.9+
 - OS: Linux, macOS, Windows
-- Không cần GPU, không cần MuJoCo/PyBullet (mô phỏng 2D grid-based)
+- KhÃ´ng cáº§n GPU, khÃ´ng cáº§n MuJoCo/PyBullet (mÃ´ phá»ng 2D grid-based)
