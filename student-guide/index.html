@@ -3,851 +3,469 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hướng dẫn Sinh viên — MPC Agentic Robotics</title>
+<title>MPC Robotics — Flow · Công việc · Gap</title>
 <style>
-:root{
-  --bg:#0f172a; --panel:#1e293b; --ink:#0f172a; --muted:#64748b;
-  --accent:#2563eb; --accent2:#7c3aed; --ok:#16a34a; --warn:#d97706; --bad:#dc2626;
-  --code-bg:#0f172a; --border:#e2e8f0;
-}
-*{box-sizing:border-box; margin:0; padding:0}
+:root{--ink:#0f172a;--muted:#64748b;--accent:#2563eb;--violet:#7c3aed;--ok:#16a34a;--warn:#d97706;--bad:#dc2626;--border:#e2e8f0;--bg:#f1f5f9}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif; background:#f8fafc; color:var(--ink); line-height:1.7}
-.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 55%,#7c3aed 100%); color:#fff; padding:56px 32px 40px}
-.hero h1{font-size:2rem; font-weight:800; letter-spacing:.5px}
-.hero p{max-width:860px; margin-top:12px; color:#cbd5e1; font-size:1.05rem}
-.hero .tags{margin-top:18px; display:flex; flex-wrap:wrap; gap:8px}
-.tag{background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:4px 14px; font-size:.82rem}
-.wrap{display:flex; max-width:1280px; margin:0 auto}
-nav{width:280px; flex-shrink:0; position:sticky; top:0; align-self:flex-start; height:100vh; overflow-y:auto; padding:24px 12px 40px; border-right:1px solid var(--border); background:#fff}
-nav h4{font-size:.72rem; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin:18px 10px 6px}
-nav a{display:block; padding:7px 12px; border-radius:8px; color:#334155; text-decoration:none; font-size:.9rem}
-nav a:hover{background:#eff6ff; color:var(--accent)}
-nav a.active{background:var(--accent); color:#fff; font-weight:600}
-main{flex:1; padding:36px 44px 80px; min-width:0; max-width:960px}
-section{margin-bottom:64px; scroll-margin-top:20px}
-section>h2{font-size:1.55rem; font-weight:800; border-bottom:3px solid var(--accent); padding-bottom:10px; margin-bottom:22px; display:flex; align-items:center; gap:12px}
-section>h2 .num{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; border-radius:12px; width:44px; height:44px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0}
-h3{font-size:1.15rem; margin:28px 0 12px; color:#1e3a8a}
-h4{font-size:1rem; margin:20px 0 8px; color:#334155}
-p{margin:10px 0}
-ul,ol{margin:10px 0 10px 26px}
-li{margin:6px 0}
-.card{background:#fff; border:1px solid var(--border); border-radius:14px; padding:22px 24px; margin:16px 0; box-shadow:0 1px 3px rgba(15,23,42,.05)}
-.card.blue{border-left:5px solid var(--accent); background:#eff6ff}
-.card.green{border-left:5px solid var(--ok); background:#f0fdf4}
-.card.amber{border-left:5px solid var(--warn); background:#fffbeb}
-.card.red{border-left:5px solid var(--bad); background:#fef2f2}
-.card.violet{border-left:5px solid var(--accent2); background:#f5f3ff}
-.card .card-title{font-weight:700; margin-bottom:8px}
-pre{background:var(--code-bg); color:#e2e8f0; border-radius:10px; padding:16px 18px; overflow-x:auto; font-size:.88rem; line-height:1.6; margin:12px 0}
-code{font-family:Consolas,'Courier New',monospace}
-p code, li code, td code{background:#e2e8f0; border-radius:5px; padding:2px 7px; font-size:.86em; color:#be185d}
-pre code{background:none; padding:0; color:inherit}
-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.92rem; background:#fff}
-th{background:#1e3a8a; color:#fff; text-align:left; padding:10px 12px; font-weight:600}
-td{border:1px solid var(--border); padding:9px 12px; vertical-align:top}
-tr:nth-child(even) td{background:#f8fafc}
-.grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-@media(max-width:700px){.grid2{grid-template-columns:1fr}}
-.badge{display:inline-block; border-radius:6px; padding:2px 10px; font-size:.78rem; font-weight:700}
-.b-ok{background:#dcfce7; color:#166534}
-.b-warn{background:#fef3c7; color:#92400e}
-.b-bad{background:#fee2e2; color:#991b1b}
-.b-info{background:#dbeafe; color:#1e40af}
-kbd{background:#1e293b; color:#fff; border-radius:5px; padding:2px 8px; font-size:.82em; font-family:Consolas,monospace}
-.diagram{background:#fff; border:1px dashed var(--accent); border-radius:12px; padding:18px; overflow-x:auto; margin:14px 0}
-.diagram pre{background:#f8fafc; color:#0f172a; border:1px solid var(--border)}
-details{background:#fff; border:1px solid var(--border); border-radius:10px; margin:10px 0; padding:12px 18px}
-details summary{cursor:pointer; font-weight:700; color:#1e3a8a}
-details[open]{border-left:4px solid var(--accent)}
-.checklist input{margin-right:8px}
-.toc-top{display:none}
-footer{background:var(--bg); color:#94a3b8; text-align:center; padding:28px; font-size:.88rem}
-@media(max-width:960px){
-  nav{display:none}
-  .toc-top{display:block; background:#fff; border:1px solid var(--border); border-radius:12px; padding:14px 18px; margin-bottom:30px}
-  .toc-top a{display:block; padding:4px 0; color:var(--accent); text-decoration:none; font-size:.92rem}
-  main{padding:24px 18px 60px}
-}
+body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.hero{background:linear-gradient(135deg,#0f172a,#1e3a8a 60%,#7c3aed);color:#fff;padding:44px 20px 36px;text-align:center}
+.hero h1{font-size:1.7rem;font-weight:800}
+.hero p{color:#cbd5e1;max-width:720px;margin:10px auto 0}
+.hero .cta{margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta a{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;padding:10px 22px;border-radius:999px;font-weight:600;transition:.2s}
+.cta a:hover{background:#fff;color:#1e3a8a}
+main{max-width:1080px;margin:0 auto;padding:36px 20px 60px}
+section{margin-bottom:70px;scroll-margin-top:16px}
+.sec-head{text-align:center;margin-bottom:28px}
+.sec-head h2{font-size:1.5rem;font-weight:800}
+.sec-head p{color:var(--muted);max-width:640px;margin:6px auto 0}
+.flow{display:flex;flex-direction:column;align-items:center;gap:0}
+.fcard{width:100%;max-width:520px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 18px;box-shadow:0 1px 4px rgba(15,23,42,.06);position:relative;transition:.2s}
+.fcard:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(37,99,235,.15);border-color:var(--accent)}
+.fcard .ic{font-size:1.5rem}
+.fcard h3{font-size:1.02rem;margin:4px 0 2px}
+.fcard p{font-size:.86rem;color:var(--muted)}
+.fcard .file{display:inline-block;margin-top:8px;font-family:Consolas,monospace;font-size:.76rem;background:#eff6ff;color:#1d4ed8;border-radius:6px;padding:2px 8px}
+.own{position:absolute;top:12px;right:12px;font-size:.7rem;font-weight:700;padding:2px 10px;border-radius:999px;color:#fff}
+.o1{background:#0ea5e9}.o2{background:#22c55e}.o3{background:#f97316}.o4{background:#8b5cf6}.o5{background:#ec4899}
+.farrow{text-align:center;font-size:1.3rem;color:#94a3b8;padding:2px 0;line-height:1}
+.fsplit{max-width:520px;text-align:center;color:var(--muted);font-size:.83rem;margin:4px 0}
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.tab-btn{border:2px solid var(--border);background:#fff;border-radius:999px;padding:8px 18px;font-weight:700;font-size:.9rem;cursor:pointer;color:#475569;transition:.15s}
+.tab-btn:hover{border-color:var(--accent)}
+.tab-btn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.member{display:none;background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;max-width:860px;margin:0 auto;box-shadow:0 2px 8px rgba(15,23,42,.06)}
+.member.on{display:block}
+.m-head{padding:20px 26px;color:#fff}
+.m-head h3{font-size:1.2rem}
+.m-head p{font-size:.9rem;opacity:.92}
+.m-body{padding:20px 26px}
+.m-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:700px){.m-grid{grid-template-columns:1fr}}
+.m-box h4{font-size:.78rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px}
+.m-box ul{list-style:none}
+.m-box li{padding:6px 0 6px 26px;position:relative;font-size:.92rem;border-bottom:1px dashed var(--border)}
+.m-box li:last-child{border-bottom:none}
+.job li::before{content:'▢';position:absolute;left:2px;color:var(--accent);font-weight:700}
+.done li::before{content:'✓';position:absolute;left:2px;color:var(--ok);font-weight:700}
+.file-li li::before{content:'📄';position:absolute;left:2px;font-size:.8rem}
+.m-box code{background:#f1f5f9;border-radius:5px;padding:1px 6px;font-family:Consolas,monospace;font-size:.84em;color:#be185d}
+/* GAP */
+.gap-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.gap-grid{grid-template-columns:1fr}}
+.gap{background:#fff;border:1px solid var(--border);border-left:6px solid;border-radius:12px;padding:16px 18px;box-shadow:0 1px 4px rgba(15,23,42,.05)}
+.gap.p0{border-left-color:var(--bad)}
+.gap.p1{border-left-color:var(--warn)}
+.gap.p2{border-left-color:#94a3b8}
+.gap .g-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pri{font-size:.72rem;font-weight:800;color:#fff;border-radius:6px;padding:2px 9px}
+.pri.p0{background:var(--bad)}.pri.p1{background:var(--warn)}.pri.p2{background:#94a3b8}
+.gap h3{font-size:.98rem;flex:1}
+.gap .meta{font-size:.78rem;color:var(--muted);margin:6px 0 8px}
+.gap details{margin-top:6px}
+.gap summary{cursor:pointer;font-size:.86rem;font-weight:700;color:var(--accent)}
+.gap details p,.gap details ol{font-size:.86rem;color:#334155;margin:8px 0 0 18px}
+/* TIMELINE */
+.tl{position:relative;max-width:760px;margin:0 auto;padding-left:34px}
+.tl::before{content:'';position:absolute;left:12px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--accent),var(--violet));border-radius:3px}
+.tl-item{position:relative;margin-bottom:22px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 18px}
+.tl-item::before{content:'';position:absolute;left:-29px;top:18px;width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid var(--accent)}
+.tl-item .when{font-size:.72rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:1px}
+.tl-item h3{font-size:1rem;margin:2px 0 6px}
+.tl-item li{font-size:.88rem;color:#334155;margin:3px 0 3px 18px}
+/* QUICK */
+.quick{background:#0f172a;border-radius:14px;padding:20px 24px;max-width:760px;margin:0 auto}
+.quick h3{color:#fff;font-size:1rem;margin-bottom:10px}
+.quick pre{color:#e2e8f0;font-family:Consolas,monospace;font-size:.86rem;line-height:1.7;overflow-x:auto}
+.quick .c{color:#64748b}
+footer{background:var(--ink);color:#94a3b8;text-align:center;padding:22px;font-size:.85rem}
+footer a{color:#93c5fd}
 </style>
 </head>
 <body>
 <header class="hero">
-  <h1>🤖 Hướng dẫn Sinh viên — MPC Agentic Robotics</h1>
-  <p>Tài liệu nhập môn dành cho sinh viên <b>chưa biết gì</b> về project: project này là gì, cài đặt thế nào, chạy lệnh nào, đọc code ở đâu, và làm gì tiếp theo. Đọc xong trang này, bạn có thể tự chạy được toàn bộ hệ thống trong <b>30 phút</b>.</p>
-  <div class="tags">
-    <span class="tag">🐍 Python 3.9+</span><span class="tag">🎮 MPC — Model Predictive Control</span><span class="tag">🗺️ A* Path Planning</span><span class="tag">🤖 AI Agent + MCP</span><span class="tag">🖥️ Không cần GPU</span>
+  <h1>🤖 MPC Agentic Robotics — Board</h1>
+  <p>Trang điều hành cho nhóm 5 người: <b>hệ thống chạy thế nào</b> (FLOW) → <b>ai làm gì</b> (JOB) → <b>thiếu gì</b> (GAP) → <b>làm thế nào</b> (HOW) → <b>chạy bài nào trước</b> (PLAN).</p>
+  <div class="cta">
+    <a href="#flow">🔀 Flow</a><a href="#jobs">👥 Công việc</a><a href="#gaps">🕳️ Gap</a><a href="#plan">📅 Lộ trình</a><a href="#quick">⌨️ Lệnh</a>
   </div>
 </header>
 
-<div class="wrap">
-<nav id="sidenav">
-  <h4>Bắt đầu</h4>
-  <a href="#s1">1. Project này là gì?</a>
-  <a href="#s2">2. Kiến trúc hệ thống</a>
-  <a href="#s3">3. Cài đặt môi trường</a>
-  <a href="#s4">4. Chạy lần đầu tiên</a>
-  <h4>Hiểu sâu</h4>
-  <a href="#s5">5. Giải phẫu từng module</a>
-  <a href="#s6">6. Hiểu tham số MPC</a>
-  <a href="#s7">7. Đọc kết quả thí nghiệm</a>
-  <h4>Thực hành</h4>
-  <a href="#s8">8. Lộ trình &amp; phân công</a>
-  <a href="#s9">9. Bài tập thực hành</a>
-  <a href="#s10">10. FAQ &amp; Xử lý lỗi</a>
-  <a href="#s11">11. Thuật ngữ nhanh</a>
-  <h4>Tham khảo</h4>
-  <a href="#s12">12. Tài liệu &amp; link học</a>
-</nav>
-
 <main>
 
-<div class="toc-top">
-  <b>📌 Mục lục</b>
-  <a href="#s1">1. Project này là gì?</a>
-  <a href="#s2">2. Kiến trúc hệ thống</a>
-  <a href="#s3">3. Cài đặt môi trường</a>
-  <a href="#s4">4. Chạy lần đầu tiên</a>
-  <a href="#s5">5. Giải phẫu từng module</a>
-  <a href="#s6">6. Hiểu tham số MPC</a>
-  <a href="#s7">7. Đọc kết quả thí nghiệm</a>
-  <a href="#s8">8. Lộ trình &amp; phân công</a>
-  <a href="#s9">9. Bài tập thực hành</a>
-  <a href="#s10">10. FAQ &amp; Xử lý lỗi</a>
-  <a href="#s11">11. Thuật ngữ nhanh</a>
-  <a href="#s12">12. Tài liệu &amp; link học</a>
+<!-- ============ FLOW ============ -->
+<section id="flow">
+<div class="sec-head">
+  <h2>🔀 FLOW — Hệ thống chạy thế nào</h2>
+  <p>Dữ liệu chảy từ trên xuống. Mỗi thẻ = 1 bước, badge màu = người phụ trách (xem mục Công việc).</p>
 </div>
+<div class="flow">
 
-<section id="s1">
-<h2><span class="num">1</span>Project này là gì?</h2>
-
-<p><b>MPC Agentic Robotics</b> là một khung học (framework) mô phỏng <b>robot di động tự hành</b> trên Python. Robot phải làm 3 việc:</p>
-<ol>
-  <li><b>Tìm đường</b> từ điểm A đến điểm B, tránh vật cản → thuật toán <b>A*</b></li>
-  <li><b>Lái bám sát đường đã tìm</b> → bộ điều khiển <b>MPC</b> (Model Predictive Control)</li>
-  <li><b>Tự động tinh chỉnh</b> các thông số điều khiển → <b>AI Agent</b> + <b>MCP Server</b></li>
-</ol>
-
-<div class="card blue">
-  <div class="card-title">🚗 Hình dung bằng đời thường</div>
-  <p>Hãy tưởng tượng một chuyến đi:</p>
-  <ul>
-    <li><b>A* Planner</b> = <i>bản đồ Google Maps</i>: vẽ ra tuyến đường tối ưu từ nhà đến trường, tránh những con đường bị chặn (vật cản).</li>
-    <li><b>MPC Controller</b> = <i>tài xế</i>: liên tục nhìn trước 1–2 giây (prediction horizon), dự đoán "nếu tôi đánh lái/lên ga thế này thì xe sẽ đi thế nào", rồi chọn hành động tối ưu nhất để bám sát tuyến đường.</li>
-    <li><b>Simulator</b> = <i>thế giới mô phỏng</i>: cập nhật vị trí xe theo vật lý, phát hiện va chạm.</li>
-    <li><b>Evaluation</b> = <i>giám khảo</i>: chấm điểm tài xế lái mượt không, lệch đường bao nhiêu, có va chạm không.</li>
-    <li><b>AI Agent + MCP</b> = <i>huấn luyện viên</i>: xem điểm số, tự đề xuất cách chỉnh "tư thế lái" (tham số MPC), chạy lại, lặp lại cho đến khi đạt mục tiêu.</li>
-  </ul>
-</div>
-
-<h3>1.1. MPC là gì? (khái niệm cốt lõi)</h3>
-<p><b>MPC — Model Predictive Control (Điều khiển dự báo)</b> là phương pháp điều khiển mà tại <i>mỗi bước thời gian</i>, bộ điều khiển sẽ:</p>
-<ol>
-  <li><b>Dự báo</b>: dùng mô hình toán của xe để dự đoán tương lai <code>N</code> bước (gọi là <b>horizon</b>, ví dụ 10 bước × 0.1s = nhìn trước 1 giây).</li>
-  <li><b>Tối ưu</b>: giải một bài toán tối ưu (QP — quadratic programming bằng thư viện <b>CVXPY</b>) để tìm chuỗi điều khiển <code>[steer, accel]</code> sao cho xe bám sát quỹ đạo tham chiếu, đồng thời các hành động được "phạt" nếu quá mạnh (mượt).</li>
-  <li><b>Áp dụng</b>: chỉ dùng <b>phần tử đầu tiên</b> của chuỗi tối ưu, bước thời gian tiếp theo lặp lại toàn bộ quá trình (đây là lý do gọi là "receding horizon").</li>
-</ol>
-
-<div class="card violet">
-  <div class="card-title">📐 Toàn bộ "vật lý" của xe chỉ nằm trong 4 công thức</div>
-  <p>Xe mô hình hóa bằng <b>kinematic bicycle model</b> (rời rạc hóa Euler), trạng thái <code>[x, y, yaw, v]</code> — vị trí, hướng đầu, tốc độ:</p>
-<pre><code>x(t+1)   = x(t)   + v·cos(yaw)·dt
-y(t+1)   = y(t)   + v·sin(yaw)·dt
-yaw(t+1) = yaw(t) + (v / L)·tan(steer)·dt
-v(t+1)   = v(t)   + accel·dt</code></pre>
-  <p>Xem mã thật: <code>controller/vehicle_model.py</code> — chỉ có 41 dòng!</p>
-</div>
-
-<h3>1.2. Ba kịch bản mẫu (scenario)</h3>
-<table>
-  <tr><th>Scenario</th><th>Bản đồ</th><th>Điểm đặc biệt</th></tr>
-  <tr><td><code>basic_circle</code></td><td>Trống 20×20</td><td>Đường thẳng đơn giản nhất — dùng để kiểm tra hệ thống cơ bản</td></tr>
-  <tr><td><code>corridor</code></td><td>Hành lang 30×10</td><td>Đường đi ngoằn ngoèo qua hành lang hẹp — thử thách lái</td></tr>
-  <tr><td><code>obstacles</code></td><td>Chướng ngại 20×20</td><td>4 khối vật cản — thử thách A* tìm đường vòng</td></tr>
-</table>
-<p>Tất cả nằm trong <code>configs/scenarios.yaml</code> — bạn có thể thêm scenario mới của mình ở đây!</p>
-</section>
-
-<section id="s2">
-<h2><span class="num">2</span>Kiến trúc hệ thống</h2>
-
-<h3>2.1. Luồng dữ liệu end-to-end</h3>
-<div class="diagram">
-<pre>
-  Map YAML          Scenario YAML
-      │                  │
-      ▼                  ▼
-┌─────────────┐   ┌─────────────┐
-│ PLANNER     │   │  CONFIG     │
-│ A* search   │   │  MPC (YAML) │
-│ trajectory  │   └──────┬──────┘
-└──────┬──────┘          │
-       │ quỹ đạo tham chiếu       │ Q,R,horizon...
-       ▼                 ▼
-┌─────────────────────────────────┐
-│ CONTROLLER — Iterative MPC      │◄──── trạng thái xe [x,y,yaw,v]
-│ (CVXPY giải QP)                 │
-└──────────────┬──────────────────┘
-               │ điều khiển [steer, accel]
-               ▼
-┌─────────────────────────────────┐
-│ SIMULATOR — Environment         │──► phát hiện va chạm
-│ cập nhật vị trí xe theo vật lý  │
-└──────────────┬──────────────────┘
-               │ log CSV (mỗi bước thời gian)
-               ▼
-┌─────────────────────────────────┐
-│ EVALUATION — metrics + plots    │──► RMSE, collision, mượt...
-└─────────────────────────────────┘
-</pre>
-</div>
-
-<h3>2.2. Tầng AI Agent + MCP (nằm "vòng ngoài" pipeline)</h3>
-<div class="diagram">
-<pre>
-  Người học đặt mục tiêu: "RMSE &lt; 0.5, 0 va chạm"
-                 │
-                 ▼
-  ┌──────────────────────┐     gọi tool qua giao thức MCP
-  │  AI AGENT LOOP       │────────────────────────┐
-  │  (agent/agent_loop)  │                        ▼
-  └──────────┬───────────┘             ┌──────────────────────┐
-             │ đề xuất config           │  MCP SERVER          │
-             ▼                         │  (mcp_server/)       │
-  ┌──────────────────────┐             │  validate + dispatch │
-  │  Strategy: nếu va   │             └──────────┬───────────┘
-  │  chạm → tăng R...    │                        │ chạy
-  └──────────────────────┘                        ▼
-                                       ┌──────────────────────┐
-             đọc metrics ◄────────────│  FULL PIPELINE        │
-             đề xuất tiếp             │  (planner→mpc→sim)    │
-                                       └──────────────────────┘
-</pre>
-</div>
-
-<h3>2.3. Ai làm gì? (6 module ↔ 5 thành viên)</h3>
-<table>
-  <tr><th>Module</th><th>Thư mục</th><th>File chính</th><th>Thành viên phụ trách</th></tr>
-  <tr><td>Entry point</td><td><code>/</code></td><td><code>run_pipeline.py</code></td><td>Member 1 — Nhóm trưởng</td></tr>
-  <tr><td>Path Planning</td><td><code>planner/</code></td><td><code>astar.py</code>, <code>trajectory.py</code></td><td>Member 2</td></tr>
-  <tr><td>MPC &amp; Control</td><td><code>controller/</code></td><td><code>vehicle_model.py</code>, <code>iterative_mpc.py</code></td><td>Member 3</td></tr>
-  <tr><td>Simulator &amp; Evaluation</td><td><code>simulator/</code>, <code>evaluation/</code></td><td><code>run_simulation.py</code>, <code>metrics.py</code></td><td>Member 4</td></tr>
-  <tr><td>AI Agent &amp; MCP</td><td><code>mcp_server/</code>, <code>agent/</code></td><td><code>tools.py</code>, <code>agent_loop.py</code></td><td>Member 5</td></tr>
-</table>
-
-<div class="card amber">
-  <div class="card-title">⚠️ Quy ước tọa độ RẤT quan trọng</div>
-  <p>Toàn bộ code dùng <b>(row, col) — (hàng, cột)</b> trên lưới ô vuông, với <code>(0,0)</code> ở <b>góc trên bên trái</b>. Khi khai báo <code>start</code>/<code>goal</code> trong scenario, thứ tự là <code>[row, col]</code>. Tọa độ thế giới (mét) được chuyển đổi qua <code>resolution</code> (mặc định 0.5 m/ô). Nhầm (x,y) với (row,col) là lỗi kinh điển — team đã từng gặp (xem mục 10).</p>
-</div>
-</section>
-
-<section id="s3">
-<h2><span class="num">3</span>Cài đặt môi trường</h2>
-
-<h3>3.1. Bước 0: Cài Python</h3>
-<p>Project cần <b>Python 3.9 trở lên</b> (khuyến nghị 3.10–3.13). Kiểm tra bằng cách mở terminal (Windows: PowerShell hoặc CMD):</p>
-<span class="cmd-label">terminal</span>
-<pre><code>python --version    # hoặc: py --version</code></pre>
-<p>Nếu chưa có, tải từ <a href="https://www.python.org/downloads/">python.org/downloads</a>. Trên Windows, <b>nhớ tick "Add Python to PATH"</b> khi cài.</p>
-
-<h3>3.2. Bước 1: Lấy mã nguồn</h3>
-<span class="cmd-label">git</span>
-<pre><code>git clone https://github.com/hieutachi/mpc-agentic-robotics.git
-cd mpc-agentic-robotics</code></pre>
-<p>Chưa biết git? Xem nhanh: <a href="https://git-scm.com/book/en/v2">Pro Git (free)</a> — chỉ cần chương 1–2.</p>
-
-<h3>3.3. Bước 2: Tạo môi trường ảo (virtual environment)</h3>
-<p>Môi trường ảo giúp cài thư viện <i>riêng cho project này</i>, không làm bẩn Python hệ thống. <b>Luôn làm bước này</b>, không bỏ qua.</p>
-
-<div class="grid2">
-<div class="card blue">
-  <div class="card-title">🪟 Windows (PowerShell)</div>
-<pre><code>python -m venv venv
-venv\Scripts\Activate.ps1</code></pre>
-  <p>Nếu PowerShell chặn script, chạy thêm 1 lần:</p>
-<pre><code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code></pre>
-</div>
-<div class="card green">
-  <div class="card-title">🍎 macOS / 🐧 Linux</div>
-<pre><code>python3 -m venv venv
-source venv/bin/activate</code></pre>
-</div>
-</div>
-<p>Sau khi kích hoạt thành công, dòng lệnh sẽ có tiền tố <code>(venv)</code>. Mỗi lần mở terminal mới phải kích hoạt lại!</p>
-
-<h3>3.4. Bước 3: Cài thư viện</h3>
-<span class="cmd-label">terminal (trong venv)</span>
-<pre><code>pip install -r requirements.txt</code></pre>
-
-<h3>3.5. Bạn vừa cài những gì?</h3>
-<table>
-  <tr><th>Thư viện</th><th>Dùng để làm gì trong project</th></tr>
-  <tr><td><code>numpy</code></td><td>Toán trên ma trận — toàn bộ mô hình xe, ma trận A/B của MPC</td></tr>
-  <tr><td><code>cvxpy</code></td><td>Giải bài toán tối ưu QP — <b>trái tim của MPC</b></td></tr>
-  <tr><td><code>scipy</code></td><td>Nội suy (interpolation) quỹ đạo tham chiếu</td></tr>
-  <tr><td><code>pandas</code></td><td>Bảng dữ liệu — quỹ đạo, log mô phỏng, kết quả batch</td></tr>
-  <tr><td><code>pyyaml</code></td><td>Đọc file cấu hình <code>.yaml</code> (map, scenario, MPC config)</td></tr>
-  <tr><td><code>matplotlib</code></td><td>Vẽ biểu đồ quỹ đạo, so sánh kết quả</td></tr>
-  <tr><td><code>pytest</code></td><td>Chạy unit test</td></tr>
-  <tr><td><code>jupyter</code></td><td>Chạy notebook hướng dẫn trong <code>notebooks/</code></td></tr>
-</table>
-
-<h3>3.6. Kiểm tra cài đặt thành công</h3>
-<span class="cmd-label">terminal (trong venv)</span>
-<pre><code>pytest planner controller simulator evaluation mcp_server -v</code></pre>
-<div class="card green">
-  <div class="card-title">✅ Kết quả mong đợi</div>
-  <pre><code>.............................................    [100%]
-45 passed</code></pre>
-  <p>Nếu thấy <code>45 passed</code> — môi trường hoàn hảo, chuyển sang mục 4. Nếu lỗi, xem <a href="#s10">mục 10 — FAQ &amp; Xử lý lỗi</a>.</p>
-</div>
-</section>
-
-<section id="s4">
-<h2><span class="num">4</span>Chạy lần đầu tiên</h2>
-
-<h3>4.1. Lệnh quan trọng nhất</h3>
-<span class="cmd-label">terminal (trong venv, đứng ở thư mục gốc repo)</span>
-<pre><code>python run_pipeline.py --scenario basic_circle --save-plot</code></pre>
-
-<h3>4.2. Đọc hiểu output</h3>
-<pre><code>============================================================
-  MPC Pipeline — Scenario: basic_circle
-============================================================
-  Map: maps/empty_20x20.yaml          ← bản đồ đang dùng
-  Start: (2, 2) → Goal: (17, 17)      ← đi từ ô (2,2) đến ô (17,17)
-
-  Grid: 20x20, obstacles: 0           ← kích thước lưới + số vật cản
-  A* path: 16 cells (0.000s)          ← A* tìm được đường 16 ô
-  Trajectory: 58 points, duration: 3.6s   ← chuyển thành quỹ đạo theo thời gian
-  Simulation: 36 steps (1.2s)         ← MPC lái xe trong 36 bước mô phỏng
-
-  Metric                          Value
-  ----------------------------------------
-  position_rmse                  0.0041   ← sai số vị trí trung bình (m) — càng nhỏ càng tốt
-  yaw_rmse                       0.0000   ← sai số góc hướng
-  completion_time                  10.2   ← thời gian đến đích (s)
-  collision_count                     0   ← số bước có va chạm
-  min_obstacle_distance              inf  ← khoảng cách gần vật cản nhất (inf = không có vật cản)
-  steering_smoothness             0.0000  ← độ mượt tay lái
-  acceleration_smoothness          0.0064 ← độ mượt ga
-
-  Goal reached: True                  ← tới đích thành công!
-  Collisions:   0
-  Plot saved: data/results/basic_circle_trajectory.png
-============================================================</code></pre>
-
-<h3>4.3. Xem hình vẽ kết quả</h3>
-<p>Mở file <code>data/results/basic_circle_trajectory.png</code>:</p>
-<ul>
-  <li><b>Trái</b>: đường xanh dashed = quỹ đạo tham chiếu (reference), đường đỏ = xe thực đi. Hai đường trùng nhau → MPC lái tốt.</li>
-  <li><b>Phải</b>: đồ thị sai số vị trí theo thời gian — cho biết xe lệch bao nhiêu (mét) tại mỗi thời điểm.</li>
-</ul>
-
-<h3>4.4. Các lệnh hữu ích khác</h3>
-<table>
-  <tr><th>Lệnh</th><th>Tác dụng</th></tr>
-  <tr><td><code>python run_pipeline.py --scenario obstacles</code></td><td>Chạy scenario có vật cản</td></tr>
-  <tr><td><code>python run_pipeline.py --scenario corridor --save-log</code></td><td>Chạy + lưu log CSV mỗi bước mô phỏng</td></tr>
-  <tr><td><code>python run_pipeline.py --batch --save-results</code></td><td>Chạy <b>tất cả</b> scenario × <b>tất cả</b> cấu hình MPC (12 lượt, mất vài phút) → <code>data/results/batch_results.csv</code></td></tr>
-  <tr><td><code>python agent/run_agent.py --scenario basic_circle --max-trials 5</code></td><td>Chạy AI Agent tự tối ưu cấu hình qua 5 lần thử</td></tr>
-  <tr><td><code>python agent/run_agent.py --scenario obstacles --rmse-target 0.3</code></td><td>Agent tối ưu với mục tiêu RMSE ≤ 0.3</td></tr>
-  <tr><td><code>jupyter notebook</code></td><td>Mở các notebook học tập trong <code>notebooks/</code></td></tr>
-</table>
-
-<div class="card blue">
-  <div class="card-title">💡 Lưu ý cho Windows</div>
-  <p>Nếu gặp lỗi <code>UnicodeEncodeError ... charmap</code> khi chạy pipeline, hãy set biến môi trường trước khi chạy:</p>
-<pre><code># PowerShell
-$env:PYTHONIOENCODING = "utf-8"; python run_pipeline.py --scenario basic_circle
-
-# CMD
-set PYTHONIOENCODING=utf-8 && python run_pipeline.py --scenario basic_circle</code></pre>
-  <p>Lý do: output có ký tự mũi tên "→" không mã hóa được trên bảng mã Windows cũ (cp1252).</p>
-</div>
-
-<h3>4.5. Thứ tự học qua 5 notebook</h3>
-<p>Đây là con đường học bài được thiết kế sẵn — mở bằng <code>jupyter notebook</code>:</p>
-<ol>
-  <li><code>01_path_planning.ipynb</code> — A* tìm đường + sinh quỹ đạo</li>
-  <li><code>02_mpc_basics.ipynb</code> — mô hình xe + MPC cơ bản với CVXPY</li>
-  <li><code>03_simulation.ipynb</code> — vòng lặp mô phỏng end-to-end</li>
-  <li><code>04_evaluation.ipynb</code> — metrics, batch experiment, biểu đồ</li>
-  <li><code>05_agent_demo.ipynb</code> — AI Agent tự động tinh chỉnh</li>
-</ol>
-</section>
-
-<section id="s5">
-<h2><span class="num">5</span>Giải phẫu từng module</h2>
-<p>Đọc theo thứ tự dưới đây — mỗi module đều có: <b>file cần đọc</b>, <b>ý chính</b>, và <b>thí nghiệm thử</b> để hiểu sâu.</p>
-
-<h3>5.1. planner/ — Robot "nhìn bản đồ tìm đường" <span class="badge b-info">Member 2</span></h3>
-<div class="card">
-  <p><b>File cần đọc:</b> <code>planner/astar.py</code> (123 dòng), <code>planner/trajectory.py</code> (107 dòng)</p>
-  <h4>A* — thuật toán tìm đường ngắn nhất trên lưới</h4>
-  <p>A* mở rộng ô từ điểm bắt đầu, luôn ưu tiên ô có chi phí nhỏ nhất theo hàm đánh giá <code>f = g + h</code>:</p>
-  <ul>
-    <li><code>g</code> = chi phí thực đã đi từ start đến ô hiện tại</li>
-    <li><code>h</code> = ước lượng khoảng cách <i>đường chim bay</i> (Euclidean) từ ô hiện tại đến goal</li>
-  </ul>
-  <p>Nhờ <code>h</code>, A* "hướng về" đích thay vì loang như Dijkstra → nhanh hơn nhiều lần. Chi tiết cài đặt dùng <code>heapq</code> (priority queue) — xem hàm <code>astar()</code> từ dòng 52.</p>
-  <h4>Trajectory — biến "đường ô vuông" thành "quỹ đạo theo thời gian"</h4>
-  <p>A* trả về dãy ô lưới khúc khuỷu. Hàm <code>path_to_trajectory()</code> chuyển thành bảng dữ liệu <code>t, x_ref, y_ref, yaw_ref, v_ref</code>: nội suy theo độ dài cung (arc length), gán tốc độ không đổi 1 m/s, tính góc hướng (yaw) từ hiệu 2 điểm liền kề. Sau đó <code>smooth_trajectory()</code> làm mượt bằng trung bình trượt (moving average).</p>
-</div>
-<div class="card green">
-  <div class="card-title">🧪 Thí nghiệm thử</div>
-  <ul>
-    <li>Gọi <code>astar(grid, start, goal, allow_diagonal=False)</code> → đường chỉ đi 4 hướng, dài hơn bao nhiêu?</li>
-    <li>Thêm vài ô vật cản vào <code>maps/obstacles_20x20.yaml</code>, xem A* đổi đường thế nào.</li>
-    <li>Đổi <code>target_speed</code> từ 1.0 → 2.0 trong <code>run_pipeline.py</code> dòng 68: quỹ đạo ngắn hơn về thời gian, MPC có còn bám nổi?</li>
-  </ul>
-</div>
-
-<h3>5.2. controller/ — Robot "lái xe" <span class="badge b-info">Member 3</span></h3>
-<div class="card">
-  <p><b>File cần đọc:</b> <code>controller/vehicle_model.py</code> (71 dòng), <code>controller/iterative_mpc.py</code> (157 dòng)</p>
-  <h4>Vì sao phải "tuyến tính hóa" (linearize)?</h4>
-  <p>Dynamics của xe có <code>cos(yaw)</code>, <code>tan(steer)</code> — <b>phi tuyến</b>, không giải trực tiếp bằng tối ưu lồi được. MPC iterative xử lý như sau:</p>
-  <ol>
-    <li>Giả sử có một quỹ đạo "dự kiến" (nominal) <code>x_nom</code>.</li>
-    <li>Tính ma trận Jacobian <code>A = ∂f/∂x</code>, <code>B = ∂f/∂u</code> tại mỗi điểm của quỹ đạo đó (hàm <code>linearize()</code>) → dynamics xấp xỉ tuyến tính: <code>x(k+1) ≈ A·x(k) + B·u(k) + c</code>.</li>
-    <li>Giải QP trên mô hình tuyến tính này (CVXPY + solver <b>OSQP</b>).</li>
-    <li>Lấy kết quả làm nominal mới, lặp lại <code>num_iterations</code> lần (mặc định 3).</li>
-  </ol>
-  <h4>Hàm cost — "bài toán" MPC thực sự tối ưu</h4>
-<pre><code>cost = Σ [ (x_k - ref_k)ᵀ·Q·(x_k - ref_k) ]     ← phạt LỆCH quỹ đạo (Q lớn = bám sát hơn)
-     + Σ [ u_kᵀ·R·u_k ]                          ← phạt HÀNH ĐỘNG mạnh (R lớn = lái nhẹ nhàng hơn)
-     + 2·(x_N - ref_N)ᵀ·Q·(x_N - ref_N)          ← phạt lệch ở ĐÍCH terminal (x2)</code></pre>
-  <p>Ràng buộc: <code>|steer| ≤ max_steer</code>, <code>|accel| ≤ max_accel</code>, <code>-0.5 ≤ v ≤ max_speed</code>. Nếu solver fail → fallback sang bộ điều khiển P (tỉ lệ) đơn giản để robot vẫn tiếp tục đi.</p>
-</div>
-<div class="card green">
-  <div class="card-title">🧪 Thí nghiệm thử</div>
-  <ul>
-    <li>Đổi <code>Q</code> = <code>[5, 5, 1, 0.2]</code> vs <code>[0.2, 0.2, 0.1, 0.05]</code> — so sánh RMSE và độ mượt.</li>
-    <li>Đặt <code>horizon</code> = 3 vs 20 — horizon ngắn MPC "cận thị" thế nào?</li>
-    <li>Sửa <code>B</code> trong <code>linearize()</code> (cố ý) → chạy test → thấy tầm quan trọng của Jacobian đúng.</li>
-  </ul>
-</div>
-
-<h3>5.3. simulator/ — Robot "sống trong thế giới mô phỏng" <span class="badge b-info">Member 4</span></h3>
-<div class="card">
-  <p><b>File cần đọc:</b> <code>simulator/environment.py</code> (98 dòng), <code>simulator/run_simulation.py</code> (107 dòng), <code>simulator/scenarios.py</code> (46 dòng)</p>
-  <h4>Vòng lặp chính (run_sim) — chỉ có 6 bước lặp đi lặp lại</h4>
-<pre><code>for step in range(max_steps):
-    1. Lấy cửa sổ tham chiếu: ref[step : step+N+1]   ← "nhìn trước" N bước
-    2. MPC giải → control [steer, accel]             ← quyết định hành động
-    3. Clip control vào biên an toàn                 ← không vượt giới hạn vật lý
-    4. Kiểm tra va chạm tại vị trí hiện tại          ← với bán kính 0.15 m
-    5. Ghi log: t, x, y, yaw, v, steer, accel, collision, min_dist, status
-    6. Cập nhật trạng thái: state = vehicle.step(state, control)
-       Nếu tới đích (cách goal &lt; 0.3 m) → dừng, báo goal_reached = True</code></pre>
-  <h4>Environment — kiểm tra va chạm và đo khoảng cách</h4>
-  <p><code>check_collision(x, y, radius)</code> xem ô lưới chứa điểm đó và các ô lân cận có phải vật cản không (tính khoảng cách thực tới tâm ô, so với <code>radius + resolution/2</code>). <code>min_obstacle_distance(x, y)</code> trả khoảng cách gần nhất tới mọi ô vật cản — dùng làm metric an toàn.</p>
-</div>
-
-<h3>5.4. evaluation/ — Robot "bị chấm điểm" <span class="badge b-info">Member 4</span></h3>
-<div class="card">
-  <p><b>File cần đọc:</b> <code>evaluation/metrics.py</code> (95 dòng), <code>evaluation/batch_runner.py</code> (93 dòng), <code>evaluation/plots.py</code> (98 dòng)</p>
-  <table>
-    <tr><th>Metric</th><th>Công thức / ý nghĩa</th><th>Càng nhỏ càng tốt?</th></tr>
-    <tr><td><code>position_rmse</code></td><td>√(mean(dx² + dy²)) — sai số vị trí trung bình bình phương</td><td>✅ có</td></tr>
-    <tr><td><code>yaw_rmse</code></td><td>Như trên nhưng cho góc (chuẩn hóa về [−π, π])</td><td>✅ có</td></tr>
-    <tr><td><code>collision_count</code></td><td>Tổng số bước mô phỏng mà robot "đụng" vật cản</td><td>✅ có (0 là tốt nhất)</td></tr>
-    <tr><td><code>min_obstacle_distance</code></td><td>Khoảng cách gần vật cản nhất trong suốt hành trình</td><td>❌ CÀNG LỚN càng an toàn</td></tr>
-    <tr><td><code>steering/acceleration_smoothness</code></td><td>Biến thiên trung bình (total variation) của tín hiệu điều khiển</td><td>✅ có (mượt)</td></tr>
-  </table>
-  <p><b>Batch runner</b> chạy ma trận: 3 scenario × (baseline + 3 variants) = 12 lượt, trả về DataFrame pandas — chính là "bảng kết quả thí nghiệm" của nhóm.</p>
-</div>
-
-<h3>5.5. mcp_server/ — "Quầy giao dịch tool" cho AI <span class="badge b-info">Member 5</span></h3>
-<div class="card">
-  <p><b>File cần đọc:</b> <code>mcp_server/safety.py</code> (88 dòng), <code>mcp_server/tools.py</code> (109 dòng), <code>mcp_server/server.py</code> (103 dòng)</p>
-  <p><b>MCP — Model Context Protocol</b> là giao thức chuẩn để AI Agent gọi các "tool" (công cụ) bên ngoài một cách an toàn, có kiểm soát. Trong project, MCP Server đóng gói pipeline thành 5 tool:</p>
-  <table>
-    <tr><th>Tool</th><th>Chức năng</th><th>Tham số</th></tr>
-    <tr><td><code>list_scenarios</code></td><td>Liệt kê scenario có sẵn</td><td>—</td></tr>
-    <tr><td><code>run_mpc_sim</code></td><td>Chạy mô phỏng với config → trả metrics</td><td><code>config</code>, <code>scenario_name</code></td></tr>
-    <tr><td><code>evaluate_experiment</code></td><td>Chấm điểm từ log CSV có sẵn</td><td><code>log_path</code></td></tr>
-    <tr><td><code>get_safe_config_range</code></td><td>Cho biết biên an toàn từng tham số</td><td>—</td></tr>
-    <tr><td><code>validate_config</code></td><td>Kiểm tra config có an toàn không</td><td><code>config</code></td></tr>
-  </table>
-  <div class="card red" style="margin-top:14px">
-    <div class="card-title">🛡️ Safety layer — vì sao quan trọng?</div>
-    <p>Agent có thể đề xuất config <b>ngớ ngẩn hoặc nguy hiểm</b> (horizon 1000, max_speed 50 m/s...). <code>validate_config()</code> chặn trước khi chạy: horizon ≤ 30, dt ∈ (0, 1], max_steer ≤ 1.57 rad, max_accel/speed ≤ 10, Q/R ≥ 0... Đây là pattern quan trọng khi làm AI Agent trong thực tế: <b>không bao giờ tin mù agent, luôn validate trước khi thực thi</b>.</p>
+  <div class="fcard">
+    <span class="own o2">M2</span>
+    <div class="ic">🗺️</div>
+    <h3>1. INPUT — Bản đồ + Scenario</h3>
+    <p>Grid ô vuông (0.5 m/ô), vật cản, điểm start/goal. Quy ước: <b>(row, col)</b>, gốc trên-trái.</p>
+    <span class="file">maps/*.yaml · configs/scenarios.yaml</span>
   </div>
-</div>
+  <div class="farrow">▼</div>
 
-<h3>5.6. agent/ — "Bộ não" tự động tinh chỉnh <span class="badge b-info">Member 5</span></h3>
-<div class="card">
-  <p><b>File cần đọc:</b> <code>agent/agent_loop.py</code> (144 dòng), <code>agent/prompts.py</code> (123 dòng)</p>
-  <p>AgentLoop chạy tối đa <code>max_trials</code> lần, mỗi lần:</p>
-<pre><code>1. Suy nghĩ    : build_simple_suggestion(goal, history) → config mới
-                 (rule-based: va chạm → tăng R, giảm speed; RMSE cao → tăng horizon, Q)
-2. Hỏi an toàn : server.call("validate_config") → chặn nếu nguy hiểm
-3. Thử nghiệm : server.call("run_mpc_sim") → metrics
-4. Ghi nhớ     : history.append(...), cập nhật best_result
-5. Dừng sớm    : nếu đạt mục tiêu (RMSE ≤ target VÀ collisions ≤ target)</code></pre>
-  <p>Hàm <code>build_prompt()</code> sinh prompt văn bản chứa goal + lịch sử thử + biên an toàn — sẵn sàng đưa cho <b>LLM</b> (như GPT/Claude) nếu muốn nâng cấp từ rule-based sang AI thật. Đây chính là cầu nối "Agentic" trong tên project.</p>
-</div>
-</section>
+  <div class="fcard">
+    <span class="own o2">M2</span>
+    <div class="ic">🧭</div>
+    <h3>2. A* SEARCH</h3>
+    <p>Tìm đường ngắn nhất tránh vật cản: f = g + h, heuristic Euclidean, đi được 8 hướng.</p>
+    <span class="file">planner/astar.py</span>
+  </div>
+  <div class="farrow">▼</div>
 
-<section id="s6">
-<h2><span class="num">6</span>Hiểu tham số MPC (chìa khóa của project)</h2>
-<p>Toàn bộ file <code>configs/mpc_baseline.yaml</code> chỉ có 9 tham số — nhưng đây chính là "bàn điều khiển" của toàn bộ hệ thống:</p>
+  <div class="fcard">
+    <span class="own o2">M2</span>
+    <div class="ic">〰️</div>
+    <h3>3. TRAJECTORY</h3>
+    <p>Đường ô vuông → quỹ đạo theo thời gian (t, x, y, yaw, v) + làm mượt.</p>
+    <span class="file">planner/trajectory.py</span>
+  </div>
+  <div class="farrow">▼</div>
 
-<table>
-  <tr><th>Tham số</th><th>Giá trị mặc định</th><th>Nghĩa là gì</th><th>Tăng lên thì…</th></tr>
-  <tr><td><code>dt</code></td><td>0.1</td><td>Bước thời gian (giây) giữa 2 lần điều khiển</td><td>Mô phỏng thô hơn, nhanh hơn</td></tr>
-  <tr><td><code>horizon</code> (N)</td><td>10</td><td>Số bước MPC "nhìn trước" (10 × 0.1s = 1 giây)</td><td>Nhìn xa hơn, ít va chạm hơn, nhưng <b>giải chậm hơn nhiều</b></td></tr>
-  <tr><td><code>Q</code></td><td>[1, 1, 0.5, 0.1]</td><td>Trọng số phạt <b>lệch quỹ đạo</b>: [x, y, yaw, v]</td><td>Bám sát hơn, nhưng hành động mạnh hơn, kém mượt</td></tr>
-  <tr><td><code>R</code></td><td>[0.1, 0.1]</td><td>Trọng số phạt <b>hành động mạnh</b>: [steer, accel]</td><td>Lái nhẹ nhàng, mượt — nhưng có thể bám kém</td></tr>
-  <tr><td><code>max_steer</code></td><td>0.5</td><td>Góc lái tối đa (rad ≈ 28.6°)</td><td>Quay đầu gấp hơn — rủi ro trượt trong mô hình thực</td></tr>
-  <tr><td><code>max_accel</code></td><td>2.0</td><td>Gia tốc tối đa (m/s²)</td><td>Đi nhanh hơn nhưng hành động gắt</td></tr>
-  <tr><td><code>max_speed</code></td><td>3.0</td><td>Tốc độ tối đa (m/s)</td><td>Đến đích nhanh, khó bám quỹ đạo hơn</td></tr>
-  <tr><td><code>vehicle_length</code> (L)</td><td>0.3</td><td>Chiều dài trục bánh xe (wheelbase, m)</td><td>Quay vòng rộng hơn (vật lý xe)</td></tr>
-  <tr><td><code>num_iterations</code></td><td>3</td><td>Số vòng lặp tuyến tính hóa của MPC iterative</td><td>Chính xác hơn, chậm hơn</td></tr>
-</table>
+  <div class="fcard">
+    <span class="own o3">M3</span>
+    <div class="ic">🎮</div>
+    <h3>4. MPC CONTROLLER</h3>
+    <p>Mỗi bước: dự báo N bước → giải QP (CVXPY) → lấy [steer, accel] đầu tiên. Tuyến tính hóa 3 vòng.</p>
+    <span class="file">controller/iterative_mpc.py</span>
+  </div>
+  <div class="farrow">▼</div>
 
-<h3>6.1. Sự đánh đổi (trade-off) cốt lõi: Q vs R</h3>
-<div class="diagram">
-<pre>
-   Q lớn ──────► "BÁM SÁT bằng mọi giá"          R lớn ──────► "AN TOÀN, MƯỢT là trên hết"
-   • RMSE ↓ nhỏ                                  • RMSE ↑ có thể tăng
-   • steer/accel thay đổi đột ngột               • tín hiệu điều khiển êm
-   • nguy hiểm trong môi trường hẹp              • an toàn khi có vật cản
+  <div class="fcard">
+    <span class="own o4">M4</span>
+    <div class="ic">🚗</div>
+    <h3>5. SIMULATOR</h3>
+    <p>Cập nhật vị trí xe theo bicycle model, check va chạm, ghi log từng bước. Dừng khi cách đích &lt; 0.3 m.</p>
+    <span class="file">simulator/run_simulation.py</span>
+  </div>
+  <div class="farrow">▼</div>
 
-              ◄────────────── cân bằng tại đâu là câu hỏi NGHIÊN CỨU của bạn ──────────────►
-</pre>
-</div>
+  <div class="fcard">
+    <span class="own o4">M4</span>
+    <div class="ic">📊</div>
+    <h3>6. METRICS</h3>
+    <p>Chấm điểm: RMSE, collision_count, min_obstacle_distance, smoothness → batch_results.csv.</p>
+    <span class="file">evaluation/metrics.py</span>
+  </div>
+  <div class="farrow">▼</div>
 
-<h3>6.2. Kết quả thực nghiệm có sẵn (đã chạy, dùng để đối chiếu)</h3>
-<table>
-  <tr><th>Scenario</th><th>Config</th><th>RMSE</th><th>Collisions</th><th>Goal</th></tr>
-  <tr><td>basic_circle</td><td>baseline</td><td>0.0041</td><td>0</td><td>✅</td></tr>
-  <tr><td>corridor</td><td>baseline</td><td>0.0074</td><td>24*</td><td>✅</td></tr>
-  <tr><td>corridor</td><td>aggressive</td><td>0.0148</td><td>67*</td><td>✅</td></tr>
-  <tr><td>obstacles</td><td>baseline</td><td>0.0128</td><td>8*</td><td>✅</td></tr>
-</table>
-<p><span class="badge b-warn">*</span> Lưu ý: số "collision" ở corridor/obstacles là <b>false positive</b> — robot thực ra còn cách vật cản 0.35–0.40 m (ngưỡng phát hiện 0.4 m tính tới tâm ô vật cản, hơi khắt khe). Đây là một trong những điểm nhóm có thể cải thiện (xem mục 9, bài tập nâng cao).</p>
+  <div class="fsplit">⭕ vòng lặp — nếu chưa đạt mục tiêu (RMSE / collisions), quay lại bước 4 với config mới:</div>
+  <div class="farrow">↺</div>
 
-<div class="card violet">
-  <div class="card-title">🎓 Ý nghĩa nghiên cứu</div>
-  <p>Batch experiment (12 lượt chạy) chính là <b>thiết kế thí nghiệm</b> của bài nghiên cứu: biến độc lập = (scenario, config), biến phụ thuộc = metrics. Kết luận kiểu: "Với scenario hành lang hẹp, config <i>conservative</i> (R lớn) giảm 50% số va chạm nhưng tăng RMSE từ 0.0074 → 0.0172" — đây là loại phát hiện định lượng mà báo cáo NCKH cần.</p>
-</div>
-</section>
+  <div class="fcard" style="border:2px dashed var(--violet)">
+    <span class="own o5">M5</span>
+    <div class="ic">🤖</div>
+    <h3>7. AI AGENT + MCP</h3>
+    <p>Agent đọc metrics → đề xuất config mới → MCP validate an toàn → chạy lại bước 4–6. Lặp đến khi đạt goal.</p>
+    <span class="file">agent/agent_loop.py · mcp_server/</span>
+  </div>
 
-<section id="s7">
-<h2><span class="num">7</span>Đọc kết quả thí nghiệm</h2>
-
-<h3>7.1. Cấu trúc thư mục output</h3>
-<pre><code>data/results/
-├── batch_results.csv                    ← bảng tổng hợp 12 lượt (mục đích chính)
-├── basic_circle_trajectory.png          ← hình quỹ đạo từng lượt
-├── basic_circle_sim_log.csv             ← log từng bước mô phỏng (nếu --save-log)
-├── corridor_trajectory.png
-└── ...</code></pre>
-
-<h3>7.2. Đọc batch_results.csv</h3>
-<p>Mỗi dòng = 1 lượt chạy. Các cột chính:</p>
-<table>
-  <tr><th>Cột</th><th>Ý nghĩa</th><th>Dùng để làm gì</th></tr>
-  <tr><td><code>scenario</code>, <code>config_name</code></td><td>Biến độc lập của thí nghiệm</td><td>Nhóm/lọc kết quả</td></tr>
-  <tr><td><code>position_rmse</code></td><td>Chất lượng bám quỹ đạo</td><td>So sánh config</td></tr>
-  <tr><td><code>collision_count</code></td><td>An toàn</td><td>So sánh config</td></tr>
-  <tr><td><code>goal_reached</code></td><td>Có tới đích không (True/False)</td><td>Điều kiện loại</td></tr>
-  <tr><td><code>sim_time_s</code></td><td>Thời gian chạy mô phỏng</td><td>Đánh giá chi phí tính toán</td></tr>
-</table>
-
-<h3>7.3. Phân tích bằng Python (3 phút)</h3>
-<span class="cmd-label">python</span>
-<pre><code>import pandas as pd
-df = pd.read_csv("data/results/batch_results.csv")
-
-# 1. Bảng trung bình theo config — nhìn tổng thể
-print(df.groupby("config_name")[["position_rmse", "collision_count"]].mean())
-
-# 2. Config nào tốt nhất cho từng scenario?
-best = df.sort_values("position_rmse").groupby("scenario").first()
-print(best[["config_name", "position_rmse", "collision_count"]])
-
-# 3. Trade-off: vẽ RMSE vs Collisions
-df.plot.scatter(x="position_rmse", y="collision_count", c="config_name", cmap="tab10")</code></pre>
-
-<div class="card amber">
-  <div class="card-title">📊 Checklist khi viết báo cáo NCKH</div>
-  <ul class="checklist">
-    <li><input type="checkbox"> Bảng kết quả đầy đủ 12 lượt, không có lượt fail</li>
-    <li><input type="checkbox"> Biểu đồ so sánh RMSE giữa các config (bar chart)</li>
-    <li><input type="checkbox"> Biểu đồ trade-off RMSE ↔ collisions (scatter)</li>
-    <li><input type="checkbox"> Hình quỹ đạo minh họa cho 3 scenario</li>
-    <li><input type="checkbox"> Nhận xét: config nào tốt cho scenario nào, VÌ SAO (liên hệ Q/R/horizon)</li>
-    <li><input type="checkbox"> Đề xuất hướng cải thiện (metric mới, config mới, thuật toán mới)</li>
-  </ul>
 </div>
 </section>
 
-<section id="s8">
-<h2><span class="num">8</span>Lộ trình 3 tháng &amp; phân công</h2>
+<!-- ============ JOBS ============ -->
+<section id="jobs">
+<div class="sec-head">
+  <h2>👥 JOB — Ai làm gì</h2>
+  <p>Bấm từng người để xem: vùng phụ trách, việc đã xong, việc phải làm. Công việc bám trực tiếp vào GAP ở mục dưới.</p>
+</div>
 
-<h3>8.1. Timeline tổng quan</h3>
-<table>
-  <tr><th>Tuần</th><th>Chủ đề</th><th>Sản phẩm phải có</th></tr>
-  <tr><td>1–2</td><td>Nền tảng: Python, CVXPY, mô hình xe</td><td>Chạy xong notebook 02; hiểu 4 phương trình bicycle model</td></tr>
-  <tr><td>3–4</td><td>A*, trajectory, MPC bám quỹ đạo</td><td>Chạy xong notebook 01+03; tự tạo 1 bản đồ mới</td></tr>
-  <tr><td>5–6</td><td>Simulation, metrics, batch experiments</td><td>Chạy xong notebook 04; bảng phân tích batch_results.csv</td></tr>
-  <tr><td>7–8</td><td>MCP + AI Agent</td><td>Chạy xong notebook 05; hiểu flow goal→agent→tool→metrics</td></tr>
-  <tr><td>9–10</td><td>Nghiên cứu sâu + mở rộng</td><td>Mỗi member 1 cải tiến riêng (xem mục 9)</td></tr>
-  <tr><td>11–12</td><td>Viết báo cáo + slide</td><td>Báo cáo NCKH, demo trực tiếp, slide thuyết trình</td></tr>
-</table>
-<p>Chi tiết từng tuần (kèm tài liệu + bài tập): xem file <code>LEARNING_PATH.md</code> trong repo.</p>
+<div class="tabs">
+  <button class="tab-btn on" data-t="m1">M1 · Pipeline</button>
+  <button class="tab-btn" data-t="m2">M2 · Planner</button>
+  <button class="tab-btn" data-t="m3">M3 · Control</button>
+  <button class="tab-btn" data-t="m4">M4 · Sim &amp; Eval</button>
+  <button class="tab-btn" data-t="m5">M5 · Agent &amp; MCP</button>
+</div>
 
-<h3>8.2. Phân công theo vai trò</h3>
-<table>
-  <tr><th>Thành viên</th><th>Phụ trách module</th><th>Câu hỏi nghiên cứu chính</th></tr>
-  <tr><td>Member 1 — Nhóm trưởng</td><td><code>run_pipeline.py</code>, quản lý repo, hội tụ tiến độ</td><td>Làm sao pipeline chạy được mọi scenario mà không crash?</td></tr>
-  <tr><td>Member 2 — Planner</td><td><code>planner/</code>, <code>maps/</code></td><td>A* với bản đồ lớn/dày vật cản nhanh không? Cần thuật toán nào thay thế?</td></tr>
-  <tr><td>Member 3 — Control</td><td><code>controller/</code>, <code>configs/</code></td><td>Q, R, horizon ảnh hưởng thế nào tới RMSE và độ mượt?</td></tr>
-  <tr><td>Member 4 — Sim &amp; Eval</td><td><code>simulator/</code>, <code>evaluation/</code></td><td>Metric nào phản ánh "lái tốt"? Metric collision có chính xác?</td></tr>
-  <tr><td>Member 5 — Agent &amp; MCP</td><td><code>mcp_server/</code>, <code>agent/</code></td><td>Agent tự tinh chỉnh hiệu quả hơn rule-based hiện tại thế nào?</td></tr>
-</table>
+<!-- M1 -->
+<div class="member on" id="m1">
+  <div class="m-head" style="background:linear-gradient(135deg,#0ea5e9,#0369a1)">
+    <h3>M1 — Pipeline &amp; Repo (Nhóm trưởng)</h3>
+    <p>Sở hữu: <code style="background:rgba(255,255,255,.2);border-radius:5px;padding:1px 6px">run_pipeline.py · evaluation/batch_runner.py · requirements.txt</code> — đảm bảo cả hệ thống chạy trơn với mọi scenario.</p>
+  </div>
+  <div class="m-body"><div class="m-grid">
+    <div class="m-box"><h4>✓ Đã xong</h4><ul class="done">
+      <li>Pipeline end-to-end chạy được 3 scenario</li>
+      <li>Sửa agent bootstrap <code>sys.path</code></li>
+      <li>Sửa lỗi corridor goal out-of-bounds (với M2)</li>
+    </ul></div>
+    <div class="m-box"><h4>▢ Phải làm</h4><ul class="job">
+      <li><b>GAP-3:</b> batch_runner thêm try/except từng run + print(flush=True)</li>
+      <li><b>GAP-4:</b> thêm CLI <code>--config/--variant</code> vào run_pipeline (argparse)</li>
+      <li><b>GAP-7:</b> pin versions trong requirements.txt</li>
+      <li>Review + merge PR của cả nhóm, giữ gate: 45 test pass</li>
+    </ul></div>
+  </div></div>
+</div>
 
-<div class="card blue">
-  <div class="card-title">🤝 Quy trình làm việc nhóm với Git</div>
-  <ol>
-    <li>Mỗi member tạo branch riêng: <code>git checkout -b feature/ten-minh</code></li>
-    <li>Commit nhỏ, thường xuyên, message rõ: <code>git commit -m "fix: sua ham check_collision"</code></li>
-    <li>Push và tạo Pull Request lên <code>main</code>, nhờ member khác review</li>
-    <li>Trước khi merge, PHẢI chạy: <code>pytest planner controller simulator evaluation mcp_server -v</code> — đủ 45 passed</li>
-    <li>Tuần 2 lần/tuần sync: mỗi member demo điều mình làm được</li>
-  </ol>
+<!-- M2 -->
+<div class="member" id="m2">
+  <div class="m-head" style="background:linear-gradient(135deg,#22c55e,#15803d)">
+    <h3>M2 — Path Planning</h3>
+    <p>Sở hữu: <code style="background:rgba(255,255,255,.2);border-radius:5px;padding:1px 6px">planner/ · maps/ · configs/scenarios.yaml</code> — robot tìm được đường đúng, nhanh, trên bản đồ hợp lệ.</p>
+  </div>
+  <div class="m-body"><div class="m-grid">
+    <div class="m-box"><h4>✓ Đã xong</h4><ul class="done">
+      <li>A* 8 hướng + trajectory nội suy + làm mượt</li>
+      <li>Sửa map corridor sai cú pháp YAML</li>
+    </ul></div>
+    <div class="m-box"><h4>▢ Phải làm</h4><ul class="job">
+      <li><b>GAP-2:</b> viết regression test load TẤT CẢ map trong scenarios.yaml (YAML sai phải fail ngay)</li>
+      <li>Tạo 2 map mới (L-shape, maze nhỏ) làm bộ thử thách</li>
+      <li><b>GAP-6:</b> cài Dijkstra (heuristic=0) so sánh độ dài đường + thời gian với A*</li>
+    </ul></div>
+  </div></div>
+</div>
+
+<!-- M3 -->
+<div class="member" id="m3">
+  <div class="m-head" style="background:linear-gradient(135deg,#f97316,#c2410c)">
+    <h3>M3 — MPC &amp; Control</h3>
+    <p>Sở hữu: <code style="background:rgba(255,255,255,.2);border-radius:5px;padding:1px 6px">controller/ · configs/mpc_*.yaml</code> — xe lái bám quỹ đạo chính xác và an toàn.</p>
+  </div>
+  <div class="m-body"><div class="m-grid">
+    <div class="m-box"><h4>✓ Đã xong</h4><ul class="done">
+      <li>Iterative MPC (3 vòng tuyến tính hóa) + P-fallback</li>
+      <li>4 variant: baseline / aggressive / conservative / precise</li>
+    </ul></div>
+    <div class="m-box"><h4>▢ Phải làm</h4><ul class="job">
+      <li><b>GAP-5:</b> vì sao aggressive tăng collision 24→67 ở corridor? Phân tích + thêm metric safety_margin</li>
+      <li>Quét horizon {3,5,10,15,20} → tìm "điểm ngọt" RMSE vs thời gian tính</li>
+      <li>Nâng cao: thêm ràng buộc khoảng cách vật cản vào QP (soft constraint)</li>
+    </ul></div>
+  </div></div>
+</div>
+
+<!-- M4 -->
+<div class="member" id="m4">
+  <div class="m-head" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)">
+    <h3>M4 — Simulator &amp; Evaluation</h3>
+    <p>Sở hữu: <code style="background:rgba(255,255,255,.2);border-radius:5px;padding:1px 6px">simulator/ · evaluation/</code> — số liệu ĐÚNG là nền của cả nghiên cứu.</p>
+  </div>
+  <div class="m-body"><div class="m-grid">
+    <div class="m-box"><h4>✓ Đã xong</h4><ul class="done">
+      <li>Vòng lặp sim 6 bước + va chạm + log CSV</li>
+      <li>7 metrics + batch 12 lượt + biểu đồ</li>
+    </ul></div>
+    <div class="m-box"><h4>▢ Phải làm</h4><ul class="job">
+      <li><b>GAP-1 (P0):</b> sửa collision metric false-positive — đổi ngưỡng 0.4 m tâm ô → khoảng cách tới biên ô</li>
+      <li>Thêm metric <code>safety_margin_violations</code></li>
+      <li>Chạy lại batch sau khi sửa → cập nhật mọi bảng/biểu đồ báo cáo</li>
+    </ul></div>
+  </div></div>
+</div>
+
+<!-- M5 -->
+<div class="member" id="m5">
+  <div class="m-head" style="background:linear-gradient(135deg,#ec4899,#be185d)">
+    <h3>M5 — AI Agent &amp; MCP</h3>
+    <p>Sở hữu: <code style="background:rgba(255,255,255,.2);border-radius:5px;padding:1px 6px">agent/ · mcp_server/</code> — tầng "trí tuệ" tự động tinh chỉnh.</p>
+  </div>
+  <div class="m-body"><div class="m-grid">
+    <div class="m-box"><h4>✓ Đã xong</h4><ul class="done">
+      <li>MCP server 5 tool + safety validation</li>
+      <li>Agent loop rule-based chạy demo đạt RMSE 0.0041</li>
+    </ul></div>
+    <div class="m-box"><h4>▢ Phải làm</h4><ul class="job">
+      <li>Thêm tool mới <code>get_scenario_info</code> (map dims, start, goal, obstacle count)</li>
+      <li><b>GAP-8:</b> nâng agent lên LLM thật — dùng <code>build_prompt()</code> sẵn có gọi LLM API thay cho rule-based</li>
+      <li>Viết doc 1 trang: flow goal → agent → tool → metrics kèm hình</li>
+    </ul></div>
+  </div></div>
 </div>
 </section>
 
-<section id="s9">
-<h2><span class="num">9</span>Bài tập thực hành (đã xếp theo độ khó)</h2>
-
-<h3>Cấp độ 1 — Làm quen (Tuần 1–4)</h3>
-<div class="card">
-  <ol>
-    <li>✅ Cài môi trường, chạy <code>pytest</code> đủ 45 passed, chạy <code>run_pipeline.py</code> cho cả 3 scenario.</li>
-    <li>Mở <code>notebooks/02_mpc_basics.ipynb</code>, đổi horizon 5 → 10 → 20, ghi lại RMSE từng giá trị.</li>
-    <li>Trong <code>configs/scenarios.yaml</code>, tạo scenario mới <code>my_scenario</code> với bản đồ trống, start (1,1) → goal (18,18). Chạy được.</li>
-    <li>Tạo bản đồ mới <code>maps/L_shape_20x20.yaml</code> (tường hình chữ L dùng cú pháp <code>[[r1,c1],[r2,c2]]</code>), A* phải tìm được đường vòng qua L.</li>
-    <li>Đổi <code>target_speed</code> 0.5 / 1.0 / 2.0 — bảng so sánh RMSE + completion_time.</li>
-  </ol>
+<!-- ============ GAPS ============ -->
+<section id="gaps">
+<div class="sec-head">
+  <h2>🕳️ GAP — Hệ thống đang thiếu gì</h2>
+  <p>Kết quả audit toàn bộ codebase. P0 = phải sửa trước khi lấy số liệu báo cáo · P1 = quan trọng · P2 = có thể chờ. Bấm "Cách làm" để xem hướng dẫn cụ thể.</p>
 </div>
+<div class="gap-grid">
 
-<h3>Cấp độ 2 — Phân tích (Tuần 5–8)</h3>
-<div class="card">
-  <ol start="6">
-    <li>Chạy <code>--batch --save-results</code>, phân tích bằng pandas: config nào tối ưu cho từng scenario?</li>
-    <li>Thêm 2 config variant mới vào <code>configs/mpc_tuning.yaml</code> (ví dụ <code>ultra_safe</code> với R rất lớn, <code>ultra_precise</code> với Q rất lớn) — đo trade-off.</li>
-    <li>Vẽ biểu đồ: RMSE theo horizon (3, 5, 10, 15, 20) — horizon nào là "điểm ngọt" giữa chính xác và thời gian tính?</li>
-    <li>Sửa <code>astar.py</code>: đổi heuristic từ Euclidean sang Manhattan — đường đi dài hơn bao nhiêu với <code>allow_diagonal=False</code>?</li>
-    <li>Dùng agent với mục tiêu <code>collision_target = 0</code> trên scenario corridor — agent có tìm được config đạt không?</li>
-  </ol>
-</div>
+  <div class="gap p0">
+    <div class="g-top"><span class="pri p0">P0</span><h3>GAP-1 · Metric collision bị "ói" sai (false positive)</h3></div>
+    <div class="meta">👤 M4 · 📁 simulator/environment.py · ⏱ ~2h · Robot bị tính va chạm khi còn cách vật cản 0.35–0.40 m → mọi số collision trong corridor/obstacles đang bị thổi phồng</div>
+    <details><summary>Cách làm →</summary>
+      <p>Ngưỡng hiện tại: <code>radius 0.15 + resolution/2 0.25 = 0.4 m</code> tính tới <b>tâm ô</b> vật cản.</p>
+      <ol><li>Trong <code>check_collision()</code>: đổi so sánh khoảng cách tới <b>biên ô</b> gần nhất thay vì tâm ô (trừ thêm resolution/2).</li>
+      <li>Thêm metric mới <code>safety_margin_violations</code>: đếm số bước có min_obstacle_distance &lt; margin (cấu hình được, vd 0.3 m).</li>
+      <li>Chạy lại <code>--batch --save-results</code>, so sánh collision trước/sau — this là kết quả nghiên cứu đầu tiên của nhóm.</li></ol>
+    </details>
+  </div>
 
-<h3>Cấp độ 3 — Nghiên cứu (Tuần 9–12, mỗi member chọn 1)</h3>
-<div class="card violet">
-  <div class="card-title">💡 Các hướng nâng cao có giá trị nghiên cứu</div>
-  <ol start="11">
-    <li><b>[Member 4] Sửa metric collision</b>: ngưỡng hiện tại (0.4 m tới <i>tâm ô</i>) gây false positive. Đổi thành khoảng cách tới <b>biên ô</b>, hoặc thêm metric <code>safety_margin_violations</code> (số lần min_obstacle_distance &lt; margin cấu hình được). So sánh kết quả trước/sau.</li>
-    <li><b>[Member 2] Thêm planner mới</b>: cài Dijkstra (bỏ heuristic) hoặc RRT* — so sánh thời gian tính và chất lượng đường với A*.</li>
-    <li><b>[Member 3] MPC với ràng buộc va chạm</b>: thêm constraint khoảng cách tới vật cản trực tiếp vào QP (soft constraint với biến slack).</li>
-    <li><b>[Member 5] Nâng Agent lên LLM thật</b>: thay <code>build_simple_suggestion()</code> bằng lời gọi API LLM với prompt từ <code>build_prompt()</code> — agent tự luận và đề xuất config.</li>
-    <li><b>[Member 1] CLI flags <code>--config/--variant</code></b>: <code>run_pipeline.py</code> chưa hỗ trợ chạy 1 config variant cụ thể (README có nhắc) — thêm vào bằng <code>argparse</code>.</li>
-  </ol>
-</div>
+  <div class="gap p0">
+    <div class="g-top"><span class="pri p0">P0</span><h3>GAP-2 · Không có test bảo vệ map/scenario</h3></div>
+    <div class="meta">👤 M2 · 📁 tests/ · ⏱ ~2h · 2 bug YAML (map corridor sai cú pháp, goal out-of-bounds) đã lọt qua vì không test nào load chúng</div>
+    <details><summary>Cách làm →</summary>
+      <ol><li>Tạo <code>tests/test_scenarios.py</code>: đọc <code>configs/scenarios.yaml</code>, với mỗi scenario: <code>yaml.safe_load</code> map tương ứng.</li>
+      <li>Assert: start/goal nằm trong biên grid, không đè lên vật cản, A* tìm được đường.</li>
+      <li>Chạy <code>pytest</code> — giờ bug YAML sẽ bị bắt ngay khi CI/test chạy.</li></ol>
+    </details>
+  </div>
 
-<div class="card green">
-  <div class="card-title">🏆 Tiêu chí "xong bài" của mỗi bài tập</div>
-  <ul>
-    <li>Có code chạy được (không báo lỗi)</li>
-    <li>Có số liệu (bảng/biểu đồ), không chỉ "chạy được là xong"</li>
-    <li>Có nhận xét 3–5 câu: hiện tượng gì, vì sao, ý nghĩa gì</li>
-    <li>Commit lên repo với message rõ ràng</li>
-  </ul>
-</div>
-</section>
+  <div class="gap p1">
+    <div class="g-top"><span class="pri p1">P1</span><h3>GAP-3 · Batch runner giòn + chạy im lặng</h3></div>
+    <div class="meta">👤 M1 · 📁 evaluation/batch_runner.py · ⏱ ~1h · 1 map hỏng từng làm sập cả 12 lượt batch; không có tiến trình in ra → không biết đang chạy đến đâu (~8–13s/run)</div>
+    <details><summary>Cách làm →</summary>
+      <ol><li>Bọc thân mỗi lượt chạy trong <code>try/except Exception</code> → ghi nhận dòng "FAILED" thay vì crash cả batch.</li>
+      <li>Trước mỗi run: <code>print(f"[{i}/{n}] {scenario} × {config} ...", flush=True)</code>.</li></ol>
+    </details>
+  </div>
 
-<section id="s10">
-<h2><span class="num">10</span>FAQ &amp; Xử lý lỗi thường gặp</h2>
+  <div class="gap p1">
+    <div class="g-top"><span class="pri p1">P1</span><h3>GAP-4 · CLI <code>--config/--variant</code> bị hứa nhưng chưa làm</h3></div>
+    <div class="meta">👤 M1 · 📁 run_pipeline.py · ⏱ ~1.5h · README và comment trong mpc_tuning.yaml đều nhắc flag này nhưng chạy sẽ báo lỗi unrecognized</div>
+    <details><summary>Cách làm →</summary>
+      <ol><li>Trong <code>run_pipeline.py</code> thêm 2 argument argparse: <code>--variant</code> (tên variant trong mpc_tuning.yaml, mặc định baseline) và <code>--config</code> (đường dẫn file YAML tùy chỉnh).</li>
+      <li>Load variant → merge đè lên baseline → chạy như thường.</li>
+      <li>Test: <code>python run_pipeline.py --scenario corridor --variant conservative</code>.</li></ol>
+    </details>
+  </div>
 
-<h3>10.1. Lỗi môi trường</h3>
-<details>
-  <summary>❌ <code>ModuleNotFoundError: No module named 'cvxpy'</code></summary>
-  <p>Bạn quên kích hoạt venv, hoặc cài ngoài môi trường ảo. Kiểm tra: gõ <code>pip list | findstr cvxpy</code> (Windows) / <code>pip list | grep cvxpy</code> (Mac/Linux). Nếu trống → <code>pip install -r requirements.txt</code> lại trong venv.</p>
-</details>
-<details>
-  <summary>❌ PowerShell: <code>running scripts is disabled</code></summary>
-  <p>Chạy 1 lần duy nhất: <code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code> rồi mở PowerShell lại.</p>
-</details>
-<details>
-  <summary>❌ <code>UnicodeEncodeError: 'charmap' codec can't encode character '→'</code></summary>
-  <p>Windows dùng bảng mã cũ. Trước khi chạy: <code>$env:PYTHONIOENCODING = "utf-8"</code> (PowerShell) hoặc <code>set PYTHONIOENCODING=utf-8</code> (CMD).</p>
-</details>
+  <div class="gap p1">
+    <div class="g-top"><span class="pri p1">P1</span><h3>GAP-5 · Variant aggressive làm collision tăng vọt</h3></div>
+    <div class="meta">👤 M3 · 📁 configs/mpc_tuning.yaml · ⏱ ~3h · Corridor: 24 → 67 collision khi đổi baseline → aggressive. Chưa hiểu rõ nguyên nhân = chưa có bài học</div>
+    <details><summary>Cách làm →</summary>
+      <ol><li>Chạy corridor với cả 2 variant, lưu <code>--save-log</code>.</li>
+      <li>Vẽ min_obstacle_distance theo thời gian — aggressive "cắt cua" sát hơn ở đoạn nào?</li>
+      <li>Kết luận: Q/R trade-off + đề xuất variant "aggressive_safe" (giảm max_speed, giữ Q cao). Đây là 1 kết luận NCKH hoàn chỉnh.</li></ol>
+    </details>
+  </div>
 
-<h3>10.2. Lỗi khi chạy pipeline</h3>
-<details>
-  <summary>❌ <code>FileNotFoundError: maps/xxx.yaml</code></summary>
-  <p>Bạn đang đứng sai thư mục — pipeline tìm file <b>tương đối so với thư mục gốc repo</b>. <code>cd</code> về thư mục chứa <code>run_pipeline.py</code> rồi chạy lại.</p>
-</details>
-<details>
-  <summary>❌ YAML lỗi cú pháp: <code>while parsing a block mapping</code></summary>
-  <p>File map/scenario YAML bị sai thụt lề hoặc sai định dạng obstacle. Cú pháp đúng cho vật cản là <b>phạm vi ô</b>: <code>- [[r1, c1], [r2, c2]]</code> (ô từ hàng r1→r2, cột c1→c2). So sánh với file <code>maps/obstacles_20x20.yaml</code> đang chạy tốt. Dán YAML của bạn vào <a href="https://yamlchecker.com/">yamlchecker.com</a> để soi lỗi.</p>
-</details>
-<details>
-  <summary>❌ <code>ValueError: start/goal out of bounds</code> hoặc goal nằm trong vật cản</summary>
-  <p><b>Kiểm tra thứ tự tọa độ</b> — code dùng (row, col), không phải (x, y). Với bản đồ 30×10 (30 hàng, 10 cột), goal phải có row &lt; 30, col &lt; 10. Lỗi này từng xảy ra với scenario corridor: goal <code>[28, 8]</code> theo (x,y) nằm ngoài bản đồ, sửa thành <code>[8, 28]</code> theo (row, col) mới đúng.</p>
-</details>
-<details>
-  <summary>⚠️ Robot đứng im hoặc đi lùi, không tới đích</summary>
-  <p>Thường do MPC solver fail liên tục (in ra <code>MPC solver failed, fallback to P controller</code>). Nguyên nhân hay gặp: <code>target_speed</code> quá cao so với <code>max_speed</code>, hoặc horizon quá lớn làm QP không hội tụ. Giảm target_speed về 1.0, horizon về 10 để debug.</p>
-</details>
-<details>
-  <summary>⚠️ Số <code>collision_count</code> &gt; 0 dù nhìn hình robot không hề chạm vật cản</summary>
-  <p>Đây là <b>false positive đã được xác nhận</b>: ngưỡng phát hiện là 0.4 m tính tới <i>tâm ô vật cản</i> (radius 0.15 + resolution/2 0.25), nên robot cách vật cản 0.35 m vẫn bị tính là va chạm. Đây chính là bài tập nâng cao số 11 (mục 9) — sửa thành khoảng cách tới biên ô.</p>
-</details>
-<details>
-  <summary>❌ <code>ModuleNotFoundError: agent</code> khi chạy <code>python agent/run_agent.py</code></summary>
-  <p>Đã được sửa trong repo (bootstrap <code>sys.path</code> ở đầu file). Nếu bạn tự fork/copy code, nhớ giữ đoạn <code>sys.path.insert(0, ...)</code> đó.</p>
-</details>
+  <div class="gap p2">
+    <div class="g-top"><span class="pri p2">P2</span><h3>GAP-6 · Chỉ có A* — chưa có planner để so sánh</h3></div>
+    <div class="meta">👤 M2 · 📁 planner/ · ⏱ ~4h · Nghiên cứu cần đối chứng (baseline vs phương pháp)</div>
+    <details><summary>Cách làm →</summary>
+      <ol><li>Dijkstra = A* với heuristic trả 0 — thêm cờ <code>heuristic="none"</code> vào <code>astar()</code>.</li>
+      <li>So sánh: số node mở rộng, thời gian, độ dài đường trên 3 map có sẵn.</li></ol>
+    </details>
+  </div>
 
-<h3>10.3. Câu hỏi khái niệm hay gặp</h3>
-<details>
-  <summary>❓ MPC và PID khác nhau thế nào?</summary>
-  <p>PID phản ứng <i>sau</i> khi đã lệch (lấy sai số hiện tại tạo hành động). MPC <i>dự đoán trước</i> N bước tương lai, xét cả ràng buộc (giới hạn lái/ga/tốc độ), tối ưu tổng chi phí — nên bám quỹ đạo chính xác hơn nhiều và xử lý được ràng buộc, đổi lại tốn tính toán hơn nhiều lần.</p>
-</details>
-<details>
-  <summary>❓ A* và Dijkstra khác gì nhau? Khi nào dùng cái nào?</summary>
-  <p>Dijkstra mở rộng đều mọi hướng (không có thông tin đích) — chắc chắn đúng nhưng chậm. A* thêm heuristic hướng về đích — nhanh hơn nhiều mà vẫn tối ưu nếu heuristic không vượt quá chi phí thực. Với bản đồ lớn và biết trước đích, luôn dùng A*. Heuristic = 0 → A* thành Dijkstra (bài tập số 14).</p>
-</details>
-<details>
-  <summary>❓ MCP là gì, tại sao project cần nó?</summary>
-  <p>MCP (Model Context Protocol) là giao thức chuẩn để AI agent gọi tool bên ngoài một cách an toàn, có schema, có validation. Trong project, agent <b>không được phép</b> gọi pipeline trực tiếp — phải đi qua MCP server, nơi mọi config được <code>validate_config()</code> kiểm tra an toàn trước khi chạy. Đây là pattern "agent an toàn" trong thực tế.</p>
-</details>
-<details>
-  <summary>❓ Vì sao MPC phải "iterative" (lặp tuyến tính hóa)?</summary>
-  <p>Vì dynamics xe là phi tuyến (cos, tan) mà solver QP chỉ giải được bài toán lồi. Cách chuẩn: tuyến tính hóa quanh quỹ đạo dự kiến → giải QP → dùng nghiệm làm quỹ đạo dự kiến mới → lặp 2–3 lần. Số vòng lặp là <code>num_iterations</code> trong config.</p>
-</details>
-</section>
+  <div class="gap p2">
+    <div class="g-top"><span class="pri p2">P2</span><h3>GAP-7 · requirements.txt chưa pin version</h3></div>
+    <div class="meta">👤 M1 · 📁 requirements.txt · ⏱ ~0.5h · Cài hôm nay và 6 tháng sau có thể ra 2 môi trường khác nhau</div>
+    <details><summary>Cách làm →</summary>
+      <ol><li>Chạy <code>pip freeze</code> trong venv → copy đúng version của numpy/cvxpy/scipy/pandas/pyyaml/matplotlib vào requirements.</li>
+      <li>Đổi <code>&gt;=</code> thành <code>==</code>.</li></ol>
+    </details>
+  </div>
 
-<section id="s11">
-<h2><span class="num">11</span>Thuật ngữ nhanh (cheat sheet)</h2>
-<table>
-  <tr><th>Thuật ngữ</th><th>Nghĩa ngắn gọn</th></tr>
-  <tr><td><b>MPC</b></td><td>Model Predictive Control — điều khiển bằng cách dự báo tương lai + tối ưu tại mỗi bước</td></tr>
-  <tr><td><b>Horizon (N)</b></td><td>Số bước tương lai MPC "nhìn thấy" khi tối ưu</td></tr>
-  <tr><td><b>Receding horizon</b></td><td>Chỉ áp dụng bước đầu của chuỗi tối ưu, rồi tính lại — lặp vô hạn</td></tr>
-  <tr><td><b>QP</b></td><td>Quadratic Programming — bài toán tối ưu hàm bậc 2 với ràng buộc tuyến tính</td></tr>
-  <tr><td><b>State (x)</b></td><td>Trạng thái xe: [x, y, yaw, v] — vị trí, hướng, tốc độ</td></tr>
-  <tr><td><b>Control (u)</b></td><td>Hành động điều khiển: [steer, accel] — góc lái, gia tốc</td></tr>
-  <tr><td><b>Q, R</b></td><td>Ma trận trọng số: Q phạt lệch quỹ đạo, R phạt hành động mạnh</td></tr>
-  <tr><td><b>Linearization</b></td><td>Phi tuyến → tuyến tính xấp xỉ bằng Jacobian (để QP giải được)</td></tr>
-  <tr><td><b>A*</b></td><td>Thuật toán tìm đường ngắn nhất trên lưới, dùng f = g + h</td></tr>
-  <tr><td><b>Heuristic (h)</b></td><td>Ước lượng khoảng cách tới đích (đường chim bay) — giúp A* "đoán" hướng đi</td></tr>
-  <tr><td><b>RMSE</b></td><td>Root Mean Square Error — sai số trung bình bình phương, thước đo bám quỹ đạo</td></tr>
-  <tr><td><b>Yaw</b></td><td>Góc hướng đầu xe so với trục X (rad)</td></tr>
-  <tr><td><b>Bicycle model</b></td><td>Mô hình động học xe 4 bánh thu gọn thành 2 bánh (kinematic)</td></tr>
-  <tr><td><b>Scenario</b></td><td>Bộ cài đặt 1 lần chạy: bản đồ + start + goal + cấu hình MPC</td></tr>
-  <tr><td><b>Variant</b></td><td>Một bộ tham số MPC khác baseline (aggressive, conservative...)</td></tr>
-  <tr><td><b>Agent</b></td><td>Chương trình AI tự đặt mục tiêu → gọi tool → đọc kết quả → điều chỉnh (vòng lặp)</td></tr>
-  <tr><td><b>MCP</b></td><td>Model Context Protocol — giao thức chuẩn để agent gọi tool an toàn</td></tr>
-  <tr><td><b>Tool</b></td><td>1 chức năng mà MCP server cung cấp cho agent (vd: run_mpc_sim)</td></tr>
-  <tr><td><b>venv</b></td><td>Môi trường ảo Python — cách ly thư viện của project</td></tr>
-  <tr><td><b>(row, col)</b></td><td>Quy ước tọa độ lưới của project: hàng trước, cột sau, gốc góc trên-trái</td></tr>
-</table>
-</section>
+  <div class="gap p2">
+    <div class="g-top"><span class="pri p2">P2</span><h3>GAP-8 · Agent là rule-based, chưa phải AI thật</h3></div>
+    <div class="meta">👤 M5 · 📁 agent/prompts.py · ⏱ ~6h · <code>build_prompt()</code> đã sinh prompt hoàn chỉnh nhưng chưa ai gọi LLM với nó</div>
+    <details><summary>Cách làm →</summary>
+      <ol><li>Thêm hàm <code>suggest_with_llm(prompt)</code> gọi LLM API (OpenAI/Anthropic) parse JSON trả về.</li>
+      <li>Fallback về rule-based khi không có API key. MCP validation vẫn chặn mọi config nguy hiểm.</li>
+      <li>So sánh: agent rule-based vs LLM — bao nhiêu trial để đạt goal? → kết quả NCKH thứ 2.</li></ol>
+    </details>
+  </div>
 
-<section id="s12">
-<h2><span class="num">12</span>Tài liệu &amp; link học</h2>
-
-<h3>12.1. Tài liệu trong repo (đọc theo thứ tự)</h3>
-<table>
-  <tr><th>File</th><th>Nội dung</th><th>Khi nào đọc</th></tr>
-  <tr><td><a href="https://github.com/hieutachi/mpc-agentic-robotics#readme">README.md</a></td><td>Tổng quan + lệnh nhanh</td><td>Ngay bây giờ</td></tr>
-  <tr><td><code>ARCHITECTURE.md</code></td><td>Sơ đồ kiến trúc các module</td><td>Sau mục 2 của trang này</td></tr>
-  <tr><td><code>docs/concepts.md</code></td><td>Kiến thức nền: tối ưu lồi, Jacobian, lượng giác</td><td>Tuần 1–2</td></tr>
-  <tr><td><code>docs/architecture.md</code></td><td>Chi tiết interface từng module</td><td>Tuần 3–4</td></tr>
-  <tr><td><code>docs/experiment_protocol.md</code></td><td>Quy trình thí nghiệm chuẩn</td><td>Tuần 5–6</td></tr>
-  <tr><td><code>docs/tool_schema.md</code></td><td>Schema đầy đủ của các MCP tool</td><td>Tuần 7–8</td></tr>
-  <tr><td><code>docs/glossary.md</code></td><td>Bảng thuật ngữ A–Z</td><td>Khi bí thuật ngữ</td></tr>
-  <tr><td><code>LEARNING_PATH.md</code></td><td>Lộ trình học theo tuần + bài tập</td><td>Đầu mỗi tuần</td></tr>
-  <tr><td><code>SELF_STUDY.md</code></td><td>Tài liệu tự học chi tiết</td><td>Học độc lập</td></tr>
-</table>
-
-<h3>12.2. Link ngoài (chọn lọc)</h3>
-<div class="grid2">
-<div class="card blue">
-  <div class="card-title">🎮 MPC &amp; Control</div>
-  <ul>
-    <li><a href="https://www.cvxpy.org/">CVXPY Documentation</a> — đọc mục Introduction + Tutorial</li>
-    <li><a href="https://www.cvxpy.org/examples/">CVXPY Examples</a> — có ví dụ MPC</li>
-    <li><a href="https://github.com/mcarfagno/mpc_python">mpc_python</a> — repository gốc tham khảo cho <code>iterative_mpc.py</code></li>
-    <li><a href="https://sites.engineering.ucsb.edu/~jbraw/mpc/">Rawlings et al. — MPC textbook</a> (free online), Chapter 1</li>
-  </ul>
-</div>
-<div class="card green">
-  <div class="card-title">🗺️ Path Planning</div>
-  <ul>
-    <li><a href="https://doi.org/10.1109/TSSC.1968.300136">Bài báo gốc A* (1968)</a></li>
-    <li><a href="https://atsushisakai.github.io/PythonRobotics/modules/5_path_planning/grid_base_search/grid_base_search.html">PythonRobotics — Grid Search</a> — trực quan hóa A*, Dijkstra</li>
-    <li><a href="https://lavalle.pl/planning/">LaValle — Planning Algorithms</a> (free), Chapter 2</li>
-  </ul>
-</div>
-<div class="card violet">
-  <div class="card-title">🤖 AI Agents &amp; MCP</div>
-  <ul>
-    <li><a href="https://modelcontextprotocol.io/">modelcontextprotocol.io</a> — tài liệu chính thức MCP</li>
-    <li><a href="https://www.anthropic.com/news/model-context-protocol">Anthropic: giới thiệu MCP</a></li>
-    <li><a href="https://huggingface.co/learn/agents-course">Hugging Face Agents Course</a> (free)</li>
-    <li><a href="https://www.kaggle.com/learn-guide/5-day-agents">Kaggle 5-Day AI Agents</a> (free)</li>
-  </ul>
-</div>
-<div class="card amber">
-  <div class="card-title">🛠️ Công cụ</div>
-  <ul>
-    <li><a href="https://git-scm.com/book/en/v2">Pro Git (free book)</a> — chương 1–2 là đủ</li>
-    <li><a href="https://pandas.pydata.org/docs/getting_started/index.html">Pandas Getting Started</a> — cho phần phân tích kết quả</li>
-    <li><a href="https://yamlchecker.com/">YAML Checker</a> — soi lỗi file .yaml</li>
-  </ul>
-</div>
-</div>
-
-<h3>12.3. Nếu muốn đi sâu hơn (tùy chọn)</h3>
-<div class="card">
-  <ul>
-    <li><b>MuJoCo</b> (<a href="https://mujoco.readthedocs.io/">docs</a>) — engine mô phỏng vật lý thật của DeepMind, bước kế tiếp từ simulator tự viết</li>
-    <li><b>ROS 2</b> — hệ điều hành robot: chuyển code này thành node ROS thực tế</li>
-    <li><b>pyMPC</b> (<a href="http://www.marcoforgione.it/pyMPC/">link</a>) — thư viện MPC khác để so sánh cách cài đặt</li>
-  </ul>
-</div>
-
-<div class="card green" style="margin-top:36px">
-  <div class="card-title">🚀 Bạn đã sẵn sàng!</div>
-  <p>Con đường ngắn nhất: <b>mục 3 (cài đặt) → mục 4 (chạy lần đầu) → mở notebook 01</b>. Khi bí, quay lại mục 5 (giải phẫu module) và mục 10 (FAQ). Chúc nhóm nghiên cứu thành công! 🤖</p>
 </div>
 </section>
 
-<footer>
-  MPC Agentic Robotics — Tài liệu hướng dẫn sinh viên · NCKH 67HTTT2 ·
-  <a href="https://github.com/hieutachi/mpc-agentic-robotics" style="color:#93c5fd">GitHub Repository</a> ·
-  Deployed on GitHub Pages
-</footer>
+<!-- ============ PLAN ============ -->
+<section id="plan">
+<div class="sec-head">
+  <h2>📅 PLAN — Làm thế nào, bắt đầu từ đâu</h2>
+  <p>Tuần 1–8 học nền tảng (mỗi tuần 1 notebook + bài tập), tuần 9–12 giải GAP và viết báo cáo.</p>
+</div>
+<div class="tl">
+
+  <div class="tl-item"><div class="when">Ngày 1</div><h3>⚙️ Mỗi người cài máy</h3>
+    <ul><li>Clone repo → venv → <code>pip install -r requirements.txt</code></li>
+    <li>Chạy <code>pytest</code> đủ 45 passed → chạy <code>run_pipeline.py --scenario basic_circle</code></li></ul></div>
+
+  <div class="tl-item"><div class="when">Tuần 1–2</div><h3>🎮 M3 dẫn dắt — MPC cơ bản</h3>
+    <ul><li>Cả nhóm làm notebook 02 (mô hình xe + CVXPY)</li>
+    <li>Bài tập: đổi horizon 5/10/20 → ghi RMSE</li>
+    <li><b>M1 song song:</b> xong GAP-7 (pin versions)</li></ul></div>
+
+  <div class="tl-item"><div class="when">Tuần 3–4</div><h3>🧭 M2 dẫn dắt — A* + trajectory</h3>
+    <ul><li>Cả nhóm làm notebook 01 + 03, tự tạo 1 map mới</li>
+    <li><b>M2:</b> xong GAP-2 (regression test) — P0</li>
+    <li><b>M1 song song:</b> xong GAP-3 + GAP-4</li></ul></div>
+
+  <div class="tl-item"><div class="when">Tuần 5–6</div><h3>📊 M4 dẫn dắt — Simulation &amp; metrics</h3>
+    <ul><li>Cả nhóm notebook 04, phân tích batch_results.csv bằng pandas</li>
+    <li><b>M4:</b> xong GAP-1 (P0) → chạy lại toàn bộ batch → số liệu "sạch" cho báo cáo</li>
+    <li><b>M3 song song:</b> bắt đầu GAP-5 (phân tích aggressive)</li></ul></div>
+
+  <div class="tl-item"><div class="when">Tuần 7–8</div><h3>🤖 M5 dẫn dắt — Agent &amp; MCP</h3>
+    <ul><li>Cả nhóm notebook 05, hiểu vòng lặp goal→agent→tool→metrics</li>
+    <li><b>M5:</b> tool mới + GAP-8 (LLM agent)</li>
+    <li><b>M3:</b> hoàn thành GAP-5 + quét horizon</li></ul></div>
+
+  <div class="tl-item"><div class="when">Tuần 9–10</div><h3>🔬 Nghiên cứu sâu — mỗi người 1 GAP</h3>
+    <ul><li>M2: GAP-6 (Dijkstra so sánh) · M3: ràng buộc va chạm vào QP</li>
+    <li>M1: tổng hợp kết quả · M4: biểu đồ báo cáo · M5: demo agent LLM</li></ul></div>
+
+  <div class="tl-item"><div class="when">Tuần 11–12</div><h3>📝 Viết báo cáo + slide</h3>
+    <ul><li>3 kết quả chính: metric sửa sai (GAP-1) · trade-off Q/R (GAP-5) · agent LLM vs rule-based (GAP-8)</li>
+    <li>Demo live: pipeline + agent tự tinh chỉnh</li></ul></div>
+
+</div>
+</section>
+
+<!-- ============ QUICK ============ -->
+<section id="quick">
+<div class="sec-head">
+  <h2>⌨️ Lệnh cần thuộc</h2>
+</div>
+<div class="quick">
+<pre><span class="c"># setup 1 lần</span>
+git clone https://github.com/hieutachi/mpc-agentic-robotics.git
+cd mpc-agentic-robotics
+python -m venv venv && venv\Scripts\Activate.ps1   <span class="c"># Windows</span>
+pip install -r requirements.txt
+pytest planner controller simulator evaluation mcp_server -v   <span class="c"># 45 passed?</span>
+
+<span class="c"># chạy hàng ngày</span>
+python run_pipeline.py --scenario basic_circle --save-plot
+python run_pipeline.py --scenario corridor --save-log
+python run_pipeline.py --batch --save-results      <span class="c"># 12 lượt, vài phút</span>
+
+<span class="c"># agent</span>
+python agent/run_agent.py --scenario obstacles --max-trials 5
+
+<span class="c"># lỗi encoding Windows?</span>
+$env:PYTHONIOENCODING = "utf-8"</pre>
+</div>
+</section>
 
 </main>
-</div>
+
+<footer>
+  MPC Agentic Robotics · NCKH 67HTTT2 ·
+  <a href="https://github.com/hieutachi/mpc-agentic-robotics">GitHub</a> · chi tiết kỹ thuật trong <a href="https://github.com/hieutachi/mpc-agentic-robotics#readme">README</a> và <code style="color:#93c5fd">docs/</code>
+</footer>
+
 <script>
-const sections = [...document.querySelectorAll('section')];
-const links = [...document.querySelectorAll('#sidenav a')];
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
-  links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+// Tabs thành viên
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
+    document.querySelectorAll('.member').forEach(m => m.classList.remove('on'));
+    btn.classList.add('on');
+    document.getElementById(btn.dataset.t).classList.add('on');
+  });
 });
 </script>
+
+
+
+
+
+
+
 
 </body>
 </html>
