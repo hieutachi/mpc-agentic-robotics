@@ -81,6 +81,35 @@ section{margin-bottom:70px;scroll-margin-top:16px}
 .quick .c{color:#64748b}
 footer{background:var(--ink);color:#94a3b8;text-align:center;padding:22px;font-size:.85rem}
 footer a{color:#93c5fd}
+/* MODAL DETAIL */
+.clickable{cursor:pointer}
+.fcard.clickable::after{content:'ℹ️ bấm để xem chi tiết';position:absolute;bottom:8px;right:14px;font-size:.68rem;color:#94a3b8;font-weight:600}
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:50;overflow-y:auto;padding:26px 14px}
+.modal-ov.on{display:block}
+.modal{background:#fff;max-width:800px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.mo-head{background:var(--ink);color:#fff;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:14px;position:sticky;top:0}
+.mo-head h3{font-size:1.08rem;line-height:1.4}
+.mo-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:1.15rem;cursor:pointer;flex-shrink:0}
+.mo-close:hover{background:var(--bad)}
+.mo-body{padding:22px 28px 30px;font-size:.93rem}
+.mo-body h4{color:#1e3a8a;margin:18px 0 6px;font-size:.95rem;border-left:4px solid var(--accent);padding-left:10px}
+.mo-body h4:first-child{margin-top:0}
+.mo-body ul,.mo-body ol{margin:6px 0 10px 22px}
+.mo-body li{margin:5px 0}
+.mo-body p{margin:8px 0}
+.mo-body pre{background:#0f172a;color:#e2e8f0;border-radius:10px;padding:12px 16px;font-family:Consolas,monospace;font-size:.82rem;line-height:1.6;overflow-x:auto;margin:10px 0}
+.mo-body code{font-family:Consolas,monospace;font-size:.88em}
+.mo-body :not(pre)>code{background:#f1f5f9;color:#be185d;border-radius:5px;padding:1px 6px}
+.mo-body table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.86rem}
+.mo-body th{background:#1e3a8a;color:#fff;text-align:left;padding:8px 10px}
+.mo-body td{border:1px solid var(--border);padding:7px 10px;vertical-align:top}
+.mo-body tr:nth-child(even) td{background:#f8fafc}
+.mo-body .tip{background:#f0fdf4;border-left:4px solid var(--ok);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:.88rem}
+.mo-body .warn{background:#fffbeb;border-left:4px solid var(--warn);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:.88rem}
+.detail-data{display:none}
+.mo-btn{display:inline-block;background:var(--accent);color:#fff;border:none;border-radius:999px;padding:8px 18px;font-weight:700;font-size:.86rem;cursor:pointer;margin:10px 0 0}
+.mo-btn:hover{background:#1d4ed8}
+.m-foot{padding:0 22px 18px;border-top:1px dashed var(--border);margin-top:4px}
 </style>
 </head>
 <body>
@@ -102,7 +131,7 @@ footer a{color:#93c5fd}
 </div>
 <div class="flow">
 
-  <div class="fcard">
+  <div class="fcard clickable" data-detail="d1">
     <span class="own o2">M2</span>
     <div class="ic">🗺️</div>
     <h3>1. INPUT — Bản đồ + Scenario</h3>
@@ -111,7 +140,7 @@ footer a{color:#93c5fd}
   </div>
   <div class="farrow">▼</div>
 
-  <div class="fcard">
+  <div class="fcard clickable" data-detail="d2">
     <span class="own o2">M2</span>
     <div class="ic">🧭</div>
     <h3>2. A* SEARCH</h3>
@@ -120,7 +149,7 @@ footer a{color:#93c5fd}
   </div>
   <div class="farrow">▼</div>
 
-  <div class="fcard">
+  <div class="fcard clickable" data-detail="d3">
     <span class="own o2">M2</span>
     <div class="ic">〰️</div>
     <h3>3. TRAJECTORY</h3>
@@ -129,7 +158,7 @@ footer a{color:#93c5fd}
   </div>
   <div class="farrow">▼</div>
 
-  <div class="fcard">
+  <div class="fcard clickable" data-detail="d4">
     <span class="own o3">M3</span>
     <div class="ic">🎮</div>
     <h3>4. MPC CONTROLLER</h3>
@@ -138,7 +167,7 @@ footer a{color:#93c5fd}
   </div>
   <div class="farrow">▼</div>
 
-  <div class="fcard">
+  <div class="fcard clickable" data-detail="d5">
     <span class="own o4">M4</span>
     <div class="ic">🚗</div>
     <h3>5. SIMULATOR</h3>
@@ -147,7 +176,7 @@ footer a{color:#93c5fd}
   </div>
   <div class="farrow">▼</div>
 
-  <div class="fcard">
+  <div class="fcard clickable" data-detail="d6">
     <span class="own o4">M4</span>
     <div class="ic">📊</div>
     <h3>6. METRICS</h3>
@@ -159,7 +188,7 @@ footer a{color:#93c5fd}
   <div class="fsplit">⭕ vòng lặp — nếu chưa đạt mục tiêu (RMSE / collisions), quay lại bước 4 với config mới:</div>
   <div class="farrow">↺</div>
 
-  <div class="fcard" style="border:2px dashed var(--violet)">
+  <div class="fcard clickable" style="border:2px dashed var(--violet)" data-detail="d7">
     <span class="own o5">M5</span>
     <div class="ic">🤖</div>
     <h3>7. AI AGENT + MCP</h3>
@@ -169,6 +198,495 @@ footer a{color:#93c5fd}
 
 </div>
 </section>
+
+<!-- ============ DETAIL CONTENT (ẩn, dùng cho modal) ============ -->
+<div class="detail-data" id="d1" data-title="Bước 1 · INPUT — Bản đồ + Scenario">
+  <h4>Map là gì?</h4>
+  <p>Một file YAML mô tả lưới ô vuông. Ô = 1 (row, col), <code>resolution = 0.5</code> m/ô nghĩa là bản đồ 20×20 ô = thế giới 10×10 m. Robot có bán kính 0.15 m.</p>
+  <pre>grid_size: [20, 20]      # 20 hàng × 20 cột
+resolution: 0.5          # mỗi ô = 0.5 m
+obstacles:               # vật cản = PHẠM VI ô [[r1,c1],[r2,c2]]
+  - [[5, 2], [7, 4]]     # ô từ hàng 5→7, cột 2→4
+  - [[12, 10], [14, 15]]</pre>
+  <h4>Scenario là gì?</h4>
+  <p>Bộ cài đặt 1 lần chạy: dùng map nào, xuất phát đâu, đích đâu, tốc độ mong muốn bao nhiêu:</p>
+  <pre>obstacles:
+  map: "maps/obstacles_20x20.yaml"
+  start: [2, 2]          # (row, col) — KHÔNG phải (x, y)!
+  goal: [17, 17]
+  target_speed: 1.0      # m/s</pre>
+  <div class="warn"><b>⚠️ Lỗi kinh điển:</b> viết goal <code>[8, 28]</code> theo tư duy (x, y) trên bản đồ 30 hàng × 10 cột → out of bounds. Đúng: thứ tự là <b>(row, col)</b>. Nhóm từng dính lỗi này — bây giờ GAP-2 sẽ thêm test chặn luôn.</div>
+  <h4>Bạn có thể làm gì với bước này</h4>
+  <ul>
+    <li>Tự vẽ map mới (hình chữ L, mê cung nhỏ) — chỉ cần sửa YAML, không cần code</li>
+    <li>Kiểm tra trực quan: in grid ra terminal bằng vài dòng Python</li>
+  </ul>
+</div>
+
+<div class="detail-data" id="d2" data-title="Bước 2 · A* SEARCH — tìm đường ngắn nhất">
+  <h4>Ý tưởng A* trong 30 giây</h4>
+  <p>A* "loang" từ ô start sang các ô kề, nhưng <b>ưu tiên ô hứa hẹn nhất</b> — được tính bằng hàm:</p>
+  <pre>f(n) = g(n) + h(n)
+
+g(n) = chi phí THỰC đã đi từ start → ô n
+h(n) = ƯỚC LƯỢNG khoảng cách ô n → goal (đường chim bay, Euclidean)</pre>
+  <p>Dùng <code>heapq</code> (priority queue) để luôn lấy ô có f nhỏ nhất ra xử lý. Nhờ h "hướng về đích", A* mở rộng ít ô hơn Dijkstra rất nhiều — cùng kết quả đường ngắn nhất.</p>
+  <h4>Code chính (planner/astar.py)</h4>
+  <pre>def astar(grid, start, goal, allow_diagonal=True):
+    open_set = [(0, start)]          # heap của (f, ô)
+    g = {start: 0}                   # chi phí tốt nhất tới từng ô
+    while open_set:
+        _, cur = heapq.heappop(open_set)
+        if cur == goal: return reconstruct_path(...)
+        for nb in neighbors(cur, allow_diagonal):
+            if grid[nb] == 1: continue          # vật cản — bỏ qua
+            new_g = g[cur] + cost(cur, nb)      # 1 hoặc √2 nếu chéo
+            if new_g &lt; g.get(nb, inf):
+                g[nb] = new_g
+                heapq.heappush(open_set, (new_g + h(nb, goal), nb))</pre>
+  <h4>Ví dụ số</h4>
+  <p>Start (2,2) → goal (17,17), bản đồ trống: đi chéo hết 15 bước chéo + √2·15 ≈ 21.2 m. Nếu cấm chéo (<code>allow_diagonal=False</code>): phải đi 15 ngang + 15 dọc = 30 ô. Cùng thử nghiệm ở notebook 01.</p>
+  <h4>Điểm cần hiểu kỹ</h4>
+  <ul>
+    <li>Vì sao heuristic phải "không vượt quá thực tế" (admissible) thì A* mới tối ưu?</li>
+    <li>Đổi heuristic sang Manhattan (|dr| + |dc|) → đường dài hơn không? (GAP-6 dùng thủ thuật heuristic=0 để có Dijkstra)</li>
+  </ul>
+</div>
+
+<div class="detail-data" id="d3" data-title="Bước 3 · TRAJECTORY — quỹ đạo theo thời gian">
+  <h4>Vấn đề: A* trả về ô vuông, xe không đi góc 90° được</h4>
+  <p>A* cho dãy ô <code>[(2,2), (3,3), (4,4)…]</code> — khúc khuỷu, không có THỜI GIAN. Bước TRAJECTORY biến nó thành bảng điểm-đến-thời-điểm mà MPC cần bám:</p>
+  <pre>t      x_ref   y_ref   yaw_ref  v_ref
+0.00   1.00    1.00    0.785    1.0     ← yaw = hướng nhìn (rad)
+0.35   1.35    1.35    0.785    1.0
+0.70   1.70    1.70    0.785    1.0     ← mỗi dòng = 1 điểm MPC phải tới đúng lúc</pre>
+  <h4>3 bước xử lý (planner/trajectory.py)</h4>
+  <ol>
+    <li><b>Nội suy theo độ dài cung</b>: đi dọc đường A*, đánh dấu điểm mỗi <code>ds = v·dt = 1.0 × 0.1 = 0.1 m</code> (nội suy tuyến tính giữa 2 tâm ô)</li>
+    <li><b>Tính yaw</b>: góc hướng = <code>atan2(y[k+1]−y[k], x[k+1]−x[k])</code> của 2 điểm liền kề</li>
+    <li><b>Làm mượt</b>: trung bình trượt (moving average) trên x, y, yaw — bỏ khúc gãy</li>
+  </ol>
+  <h4>Vì sao bước này quan trọng với MPC</h4>
+  <ul>
+    <li>MPC bám quỹ đạo này — nếu <code>target_speed</code> quá cao so với giới hạn lái, xe trượt khỏi quỹ đạo → RMSE tăng</li>
+    <li>Số điểm quỹ đạo quyết định thời lượng mô phỏng: 58 điểm × 0.1 s ≈ 5.8 s hành trình</li>
+    <li>Thí nghiệm: đổi <code>target_speed</code> 0.5 / 1.0 / 2.0 → quan sát RMSE và completion_time đổi thế nào</li>
+  </ul>
+</div>
+
+<div class="detail-data" id="d4" data-title="Bước 4 · MPC CONTROLLER — bộ điều khiển dự báo">
+  <h4>Vòng lặp MPC — "đi xe bằng cách nhìn trước"</h4>
+  <p>Tại mỗi bước thời gian (mỗi 0.1 s), MPC làm 3 việc:</p>
+  <ol>
+    <li><b>Dự báo</b>: lấy cửa sổ quỹ đạo tham chiếu <code>ref[step : step+N+1]</code> (N=10 bước = 1 giây phía trước)</li>
+    <li><b>Tối ưu</b>: giải bài toán QP — tìm chuỗi [steer, accel] sao cho tổng chi phí dưới đây nhỏ nhất:</li>
+  </ol>
+  <pre>cost = Σ (x_k − ref_k)ᵀ·Q·(x_k − ref_k)   ← phạt LỆCH quỹ đạo
+     + Σ u_kᵀ·R·u_k                        ← phạt HÀNH ĐỘNG mạnh
+     + 2·(x_N − ref_N)ᵀ·Q·(x_N − ref_N)    ← phạt lệch ở ĐÍCH
+
+ràng buộc: |steer| ≤ 0.5 rad · |accel| ≤ 2 m/s² · 0 ≤ v ≤ 3 m/s</pre>
+  <ol start="3"><li><b>Áp dụng</b>: chỉ lấy <b>phần tử đầu tiên</b> của chuỗi tối ưu, bấm ga/lái, rồi lặp lại toàn bộ — gọi là <i>receding horizon</i></li></ol>
+  <h4>Vì sao phải "iterative" (3 vòng tuyến tính hóa)?</h4>
+  <p>Dynamics xe có <code>cos(yaw)</code>, <code>tan(steer)</code> — phi tuyến, còn solver OSQP chỉ giải được bài toán LỒI. Giải pháp: tuyến tính hóa quanh quỹ đạo dự kiến bằng Jacobian, giải QP, lấy nghiệm làm quỹ đạo dự kiến mới, lặp lại 3 lần:</p>
+  <pre>x_nom → Jacobian A=∂f/∂x, B=∂f/∂u → giải QP → nghiệm thành x_nom mới → lặp ×3</pre>
+  <p>Xem hàm <code>linearize()</code> trong <code>controller/iterative_mpc.py</code> — chỉ ~20 dòng, tính đạo hàm riêng từng biến trạng thái.</p>
+  <h4>Bảng tham số và tác động (configs/mpc_baseline.yaml)</h4>
+  <table>
+    <tr><th>Tham số</th><th>Mặc định</th><th>Tăng lên thì…</th></tr>
+    <tr><td>horizon (N)</td><td>10</td><td>Nhìn xa, ít va chạm, NHƯNG giải chậm hơn nhiều</td></tr>
+    <tr><td>Q = [x,y,yaw,v]</td><td>[1,1,0.5,0.1]</td><td>Bám sát hơn, nhưng hành động gắt, kém mượt</td></tr>
+    <tr><td>R = [steer,accel]</td><td>[0.1,0.1]</td><td>Lái êm, an toàn — nhưng bám kém hơn</td></tr>
+    <tr><td>max_steer</td><td>0.5 rad</td><td>Quay gấp hơn — rủi ro trượt (ngoài mô hình)</td></tr>
+    <tr><td>num_iterations</td><td>3</td><td>Chính xác hơn, chậm hơn</td></tr>
+  </table>
+  <div class="tip"><b>💡 Trade-off cốt lõi của cả nghiên cứu:</b> Q lớn = "bám bằng mọi giá" ↔ R lớn = "êm/an toàn trên hết". Không có giá trị đúng — chỉ có điểm cân bằng phù hợp từng scenario. Đó chính là thứ nhóm đang đo bằng batch experiment.</div>
+  <h4>Khi solver fail thì sao?</h4>
+  <p>Nếu QP không hội tụ (config quá gắt), code fallback sang bộ điều khiển P đơn giản (đi theo góc tới waypoint) — robot vẫn di tiếp thay vì đứng im. Thấy log <code>MPC solver failed</code> = tín hiệu config có vấn đề.</p>
+</div>
+
+<div class="detail-data" id="d5" data-title="Bước 5 · SIMULATOR — vòng lặp mô phỏng">
+  <h4>Vòng lặp chính — 6 bước lặp đi lặp lại (simulator/run_simulation.py)</h4>
+  <pre>for step in range(max_steps):
+  1. ref_window = ref[step : step+N+1]        ← "nhìn trước" N bước
+  2. control = mpc.solve(state, ref_window)   ← MPC quyết định [steer, accel]
+  3. control = clip(control)                  ← kẹp vào giới hạn vật lý
+  4. collision = env.check_collision(x, y)    ← với bán kính 0.15 m
+  5. log.append(t, x, y, yaw, v, steer, accel, collision, min_dist)
+  6. state = vehicle.step(state, control)     ← bicycle model cập nhật vị trí
+     nếu cách đích &lt; 0.3 m → goal_reached = True, dừng</pre>
+  <h4>Mô hình xe — chỉ 4 dòng toán (controller/vehicle_model.py)</h4>
+  <pre>x(t+1)   = x(t)   + v·cos(yaw)·dt
+y(t+1)   = y(t)   + v·sin(yaw)·dt
+yaw(t+1) = yaw(t) + (v / L)·tan(steer)·dt    ← L = 0.3 m (wheelbase)
+v(t+1)   = v(t)   + accel·dt                 ← dt = 0.1 s</pre>
+  <h4>Check va chạm hoạt động thế nào (simulator/environment.py)</h4>
+  <p>Nhìn ô lưới chứa điểm (x, y) và các ô lân cận; tính khoảng cách thực tới tâm ô vật cản; so với ngưỡng <code>radius + resolution/2 = 0.15 + 0.25 = 0.4 m</code>.</p>
+  <div class="warn"><b>⚠️ Điểm gây tranh cãi (GAP-1, P0):</b> ngưỡng 0.4 m tính tới TÂM ô khiến robot cách tường 0.35 m vẫn bị tính là "va chạm" → số collision ở corridor/obstacles bị thổi phồng. Việc sửa ngưỡng này là bài tập nghiên cứu đầu tiên của nhóm (M4 phụ trách, xem mục GAP).</div>
+  <h4>Log CSV mỗi bước trông như thế nào</h4>
+  <pre>t, x, y, yaw, v, steer, accel, collision, min_obstacle_distance, status
+0.0, 1.00, 1.00, 0.785, 1.00, 0.0, 0.0, 0, inf, moving
+0.1, 1.10, 1.09, 0.784, 1.00, 0.001, 0.0, 0, inf, moving
+...</pre>
+  <p>File này là "bằng chứng thô" — mọi metric ở bước 6 đều tính từ nó. <code>--save-log</code> để lưu lại.</p>
+</div>
+
+<div class="detail-data" id="d6" data-title="Bước 6 · METRICS — chỉ số chấm điểm">
+  <h4>4 chỉ số chấm điểm (evaluation/metrics.py)</h4>
+  <table>
+    <tr><th>Chỉ số</th><th>Công thức / cách tính</th><th>Ý nghĩa</th><th>Muốn…</th></tr>
+    <tr><td><b>RMSE</b></td><td>√( (1/n)·Σ (x_k−x_ref_k)² + (y_k−y_ref_k)² )</td><td>Trung bình lệch khỏi quỹ đạo (m)</td><td>Nhỏ</td></tr>
+    <tr><td><b>collision_count</b></td><td>Số bước có <code>min_dist &lt; ngưỡng</code></td><td>Sao thô — có lặp = có va chạm (xem GAP-1)</td><td>0</td></tr>
+    <tr><td><b>min_obstacle_distance</b></td><td>Khoảng cách nhỏ nhất trong cả hành trình</td><td>Mức an toàn — không "chạm" thì mới không vỡ</td><td>Lớn</td></tr>
+    <tr><td><b>smoothness</b></td><td>RMS của Δsteer giữa 2 bước</td><td>Độ mượt lái — xoay gắt tốn năng lượng, dễ trượt</td><td>Nhỏ</td></tr>
+  </table>
+  <h4>Batch experiment — thứ tạo ra kết quả NCKH</h4>
+  <p>Chạy 1 lần với <code>run_pipeline.py --batch --save-results</code>: ~12 lượt = 3 scenario × 4 biến thể (baseline, aggressive, conservative, no_smooth). Kết quả gộp thành bảng:</p>
+  <table>
+    <tr><th>Scenario</th><th>Variant</th><th>RMSE (m)</th><th>Collision</th><th>Min dist (m)</th></tr>
+    <tr><td>basic_circle</td><td>baseline</td><td>0.03</td><td>0</td><td>5.0</td></tr>
+    <tr><td>obstacles</td><td>baseline</td><td>0.13</td><td>1 ⚠️</td><td>0.38</td></tr>
+    <tr><td>corridor</td><td>baseline</td><td>0.09</td><td>0</td><td>0.45</td></tr>
+    <tr><td>obstacles</td><td>aggressive</td><td>0.25</td><td>67 ⚠️⚠️</td><td>0.21</td></tr>
+  </table>
+  <div class="tip"><b>💡 Cách đọc bảng này:</b> aggressive QUẢ THỰC không va chạm 67 lần — phần lớn là do GAP-1 (ngưỡng tính va chạm sai). Sửa GAP-1 xong phải chạy lại toàn bộ batch → các con số NCKH của nhóm chỉ "chốt" sau GAP-1.</div>
+  <h4>Biến thể config (configs/mpc_*.yaml)</h4>
+  <pre>aggressive:    Q=[2,2,0.5,0.1]  R=[0.02,0.02]  → "bám bằng mọi giá"
+conservative:  Q=[0.5,0.5,0.3,0.1]  R=[0.3,0.3]  → "an toàn trên hết"
+no_smooth:     tắt làm mượt quỹ đạo  → thấy rõ tác dụng của bước 3</pre>
+  <p>Nhiệm vụ NCKH: tìm tổ hợp Q/R tốt nhất cho <b>từng scenario</b> — không có 1 config thắng mọi nơi. Bảng so sánh này chính là "kết quả" đưa vào báo cáo.</p>
+</div>
+
+<div class="detail-data" id="d7" data-title="Bước 7 · AI AGENT + MCP — tầng trí tuệ">
+  <h4>Agent là gì trong dự án này?</h4>
+  <p><b>Hiện tại</b>: agent = vòng lặp IF-ELSE thuần (agent/agent_loop.py) — đọc metrics, so với ngưỡng, chọn config từ danh sách có sẵn. Chưa "AI" theo nghĩa LLM.</p>
+  <p><b>Mục tiêu</b> (GAP-8, P2): thay if-else bằng LLM — đưa metrics + mô tả scenario cho LLM, LLM ĐỀ XUẤT config mới (giải thích được tại sao), chạy lại, lặp cho tới khi đạt goal.</p>
+  <h4>Vòng lặp hiện tại</h4>
+  <pre>trial = 0
+while trial &lt; max_trials:
+  1. result = run_pipeline(scenario, config)          ← chạy mô phỏng
+  2. m = result.metrics                                ← RMSE, collision…
+  3. if m.collision == 0 and m.rmse &lt; 0.2: break       ← đạt goal, dừng
+  4. action = rule_engine(m)                           ← IF-ELSE quyết định
+       nếu collision &gt; 10 → đổi sang "conservative"
+       nếu rmse &gt; 0.5   → tăng Q, giảm R
+       nếu quá chậm      → tăng max_steps
+  5. config = apply_action(config); trial += 1</pre>
+  <h4>Ví dụ chạy thực tế</h4>
+  <pre>python agent/run_agent.py --scenario obstacles --max-trials 5
+
+[trial 1] collision=23 rmse=0.41 → action: switch_to_conservative
+[trial 2] collision=2  rmse=0.28 → action: increase_Q_x_y
+[trial 3] collision=0  rmse=0.19 → GOAL REACHED ✅ (3 trials)</pre>
+  <h4>MCP server — "cổng an toàn" bắt buộc phải hiểu</h4>
+  <p>MCP (Model Context Protocol) là lớp bọc giữa agent và pipeline: agent KHÔNG được gọi <code>run_pipeline</code> trực tiếp mà phải qua các "tool" MCP, mỗi tool:</p>
+  <ul>
+    <li><b>validate</b> tham số đầu vào (config có key thiếu? giá trị ngoài phạm vi? → từ chối, không chạy)</li>
+    <li><b>chặn</b> hành vi nguy hiểm (viết file ngoài workspace, timeout quá dài)</li>
+    <li><b>ghi log</b> mọi lần gọi → truy vết được agent đã làm gì</li>
+  </ul>
+  <div class="tip"><b>💡 Vì sao quan trọng:</b> khi agent là LLM (bước GAP-8), nó có thể đề xuất config NỤC LY (max_steps=999999, bỏ ràng buộc va chạm). MCP chính là "rào chắn" đảm bảo máy chạy không phá project. Đây là chủ đề rất hợp thời (AI safety + agent orchestration).</div>
+  <h4>Đọc hiểu code theo thứ tự</h4>
+  <ol>
+    <li><code>mcp_server/server.py</code> — các tool được expose</li>
+    <li><code>mcp_server/validators.py</code> — quy tắc validate config</li>
+    <li><code>agent/agent_loop.py</code> — vòng lặp if-else hiện tại</li>
+  </ol>
+</div>
+
+<div class="detail-data" id="jm1" data-title="M1 — Hướng dẫn chi tiết công việc">
+  <h4>Bạn là ai trong nhóm</h4>
+  <p>Nhóm trưởng — không nhất thiết code nhiều nhất, nhưng phải bảo đảm <b>mọi thứ luôn chạy được</b> và ai đó kẹt thì bạn gỡ được.</p>
+  <h4>GAP-3 — Batch runner (ước lượng ~1h)</h4>
+  <p><b>Bước 1:</b> mở <code>evaluation/batch_runner.py</code>, tìm vòng lặp for chạy từng (scenario, config).</p>
+  <pre>for i, (scn, cfg) in enumerate(runs):
+    print(f"[{i+1}/{len(runs)}] {scn} × {cfg} ...", flush=True)
+    try:
+        result = run_pipeline(scenario=scn, config=cfg)
+        rows.append(result.metrics)
+    except Exception as e:
+        print(f"  ✗ FAILED: {e}", flush=True)
+        rows.append({"scenario": scn, "config": cfg, "status": "FAILED"})</pre>
+  <p><b>Tiêu chí xong:</b> cố tình hỏng 1 map YAML → batch vẫn chạy hết 12 lượt, dòng FAILED xuất hiện, các lượt khác không bị ảnh hưởng.</p>
+  <h4>GAP-4 — CLI --config/--variant (~1.5h)</h4>
+  <pre>parser.add_argument("--variant", default="baseline",
+                    help="tên variant trong configs/mpc_tuning.yaml")
+parser.add_argument("--config", default=None,
+                    help="đường dẫn file YAML tùy chỉnh (đè lên variant)")
+...
+params = load_params(args.config or args.variant)</pre>
+  <p><b>Tiêu chí xong:</b> <code>python run_pipeline.py --scenario corridor --variant aggressive</code> chạy được và kết quả khác baseline rõ rệt (RMSE/collision đổi).</p>
+  <h4>GAP-7 — Pin versions (~30 phút)</h4>
+  <ol>
+    <li><code>pip freeze | findstr /i "numpy cvxpy scipy pandas yaml matplotlib"</code></li>
+    <li>Ghi đúng version đó vào requirements.txt dạng <code>numpy==1.26.4</code></li>
+    <li>Test trên máy khác (hoặc venv mới): <code>python -m venv t && t\Scripts\pip install -r requirements.txt && pytest</code></li>
+  </ol>
+  <h4>Công việc hằng tuần</h4>
+  <ul>
+    <li>Review PR của mọi người trong 24h — quy tắc: PR chỉ merge khi 45 test pass + chưa phá tính năng có sẵn</li>
+    <li>Chủ trì sinh hoạt 15 phút đầu buổi họp: mỗi người nói "đã làm / sẽ làm / bị kẹt"</li>
+  </ul>
+</div>
+
+<div class="detail-data" id="jm2" data-title="M2 — Hướng dẫn chi tiết công việc">
+  <h4>Bạn là ai trong nhóm</h4>
+  <p>Chủ nhân của bước 1–3 trong FLOW: robot phải <b>biết bản đồ, tìm được đường, có quỹ đạo mượt</b> để MPC bám.</p>
+  <h4>GAP-2 — Regression test map/scenario (P0, ~2h)</h4>
+  <p><b>Bước 1:</b> tạo <code>tests/test_scenarios.py</code> — test không cần pytest fixture gì cao siêu:</p>
+  <pre>import yaml, pytest
+from planner.astar import astar
+from simulator.environment import Environment
+from configs.loader import load_scenarios   # chỉnh theo hàm thật trong repo
+
+@pytest.mark.parametrize("name", load_scenarios().keys())
+def test_scenario_valid(name):
+    s = load_scenarios()[name]
+    grid = Environment.from_yaml(s.map).grid
+    h, w = grid.shape
+    for pt in (s.start, s.goal):
+        assert 0 &lt;= pt[0] &lt; h and 0 &lt;= pt[1] &lt; w, f"{name}: {pt} ngoài biên"
+        assert grid[pt] == 0, f"{name}: {pt} đè lên vật cản"
+    path = astar(grid, s.start, s.goal)
+    assert path is not None, f"{name}: A* không tìm được đường"</pre>
+  <p><b>Bước 2:</b> chạy <code>pytest tests/test_scenarios.py -v</code> → tất cả scenario phải pass. <b>Tiêu chí xong:</b> cố tình sửa 1 map YAML sai cú pháp → test FAIL ngay với thông báo rõ.</p>
+  <h4>2 map mới — bộ thử thách (~1h/map)</h4>
+  <ul>
+    <li><b>L-shape:</b> tường chữ L buộc robot đi vòng — test khả năng rẽ</li>
+    <li><b>maze_small:</b> 3–4 bức tường ngắn xen kẽ — test A* chọn đúng nhánh</li>
+    <li>Mỗi map thêm 1 scenario tương ứng vào <code>configs/scenarios.yaml</code>, rồi chạy <code>pytest</code> (test mới của GAP-2 sẽ tự kiểm tra map mới!)</li>
+  </ul>
+  <h4>GAP-6 — Dijkstra so sánh (~4h)</h4>
+  <pre>def heuristic(a, b, kind="euclid"):
+    if kind == "none": return 0            # heuristic=0 → Dijkstra
+    return ((a[0]-b[0])**2 + (a[1]-b[1])**2) ** 0.5</pre>
+  <p>Đo trên 3 map: số node mở rộng (thêm counter vào astar), thời gian (time.perf_counter), độ dài đường. Kết quả mong đợi: cùng độ dài đường, Dijkstra mở rộng RẤT nhiều node hơn → đây là bảng so sánh đưa thẳng vào báo cáo.</p>
+</div>
+
+<div class="detail-data" id="jm3" data-title="M3 — Hướng dẫn chi tiết công việc">
+  <h4>Bạn là ai trong nhóm</h4>
+  <p>Chủ nhân bước 4 trong FLOW — trái tim của dự án. MPC là thứ làm robot "thông minh" hơn path-following thường, và là nhân vật chính trong báo cáo NCKH.</p>
+  <h4>GAP-5 — Vì sao aggressive tăng collision 24→67? (~3h)</h4>
+  <p><b>Giả thuyết cần kiểm chứng:</b> aggressive giảm R (phạt hành động) → solver sẵn sàng lái gắt để bám sát quỹ đạo → quỹ đạo thực đi sát tường → (cộng thêm lỗi ngưỡng ở GAP-1) collision tăng vọt.</p>
+  <ol>
+    <li>Chạy 2 variant trên corridor, đều <code>--save-log</code>:</li>
+  </ol>
+  <pre>python run_pipeline.py --scenario corridor --variant baseline --save-log
+python run_pipeline.py --scenario corridor --variant aggressive --save-log</pre>
+  <ol start="2">
+    <li>Vẽ <code>min_obstacle_distance</code> theo thời gian cho cả 2 trên cùng 1 hình → aggressive sát tường hơn ở đoạn nào? Nhìn thấy ngay.</li>
+    <li>Đếm: bao nhiêu % bước của aggressive có min_dist &lt; 0.4 m? → ước lượng phần "false positive" (liên kết chéo với GAP-1 của M4).</li>
+    <li>Kết luận + đề xuất variant <b>aggressive_safe</b>: giữ Q cao nhưng <code>max_speed</code> thấp hơn / R lớn hơn chút. Chứng minh collision giảm mà RMSE vẫn tốt.</li>
+  </ol>
+  <p><b>Tiêu chí xong:</b> 1 biểu đồ + 1 đoạn kết luận 10 dòng — kết quả NCKH thứ 2 của nhóm.</p>
+  <h4>Quét horizon {3, 5, 10, 15, 20} (~2h)</h4>
+  <ul>
+    <li>Với mỗi giá trị: chạy basic_circle + obstacles, ghi RMSE + thời gian tính 1 bước MPC</li>
+    <li>Vẽ curve RMSE vs horizon và time vs horizon → tìm "điểm ngọt"</li>
+    <li>Thời gian giải tăng gần tuyến tính với N — kiểm chứng bằng số đo được</li>
+  </ul>
+  <h4>Nâng cao — ràng buộc vật cản trong QP (~4h, tùy chọn)</h4>
+  <p>Thêm soft constraint: phạt nặng khi điểm dự báo nằm trong vùng đệm quanh vật cản (inflation 0.3 m) — chi phí dạng hinge <code>max(0, d_safe − dist(x_k, obstacle))²</code> nhân hệ số lớn. Đây là hướng CH-MPC nổi tiếng — nếu làm được có thể thành điểm nhấn báo cáo.</p>
+</div>
+
+<div class="detail-data" id="jm4" data-title="M4 — Hướng dẫn chi tiết công việc">
+  <h4>Bạn là ai trong nhóm</h4>
+  <p>Chủ nhân bước 5–6 trong FLOW. Code đẹp đến đâu mà <b>số liệu sai thì nghiên cứu sai</b> — bạn là "bộ phận kiểm định chất lượng".</p>
+  <h4>GAP-1 — Sửa collision metric (P0, ~2h) — Ưu tiên số 1 của cả nhóm</h4>
+  <p><b>Bước 1:</b> viết test minh họa bug TRƯỚC khi sửa (TDD nhẹ nhàng):</p>
+  <pre># tests/test_collision.py
+def test_no_collision_near_wall():
+    # robot cách tường 0.35 m — TỐT, không được tính là va chạm
+    env = Environment.from_yaml("maps/corridor.yaml")
+    x, y = vi_tri_cach_tuong_0_35m(env)   # tính từ map thật
+    assert env.check_collision(x, y) == False</pre>
+  <p><b>Bước 2:</b> chạy <code>pytest tests/test_collision.py</code> → phải FAIL (đây là chứng cứ bug). <b>Bước 3:</b> sửa <code>check_collision()</code> trong <code>simulator/environment.py</code>:</p>
+  <pre># TRƯỚC: khoảng cách tới TÂM ô vật cản, so với 0.4 m
+# SAU:   khoảng cách tới BIÊN gần nhất của ô
+d_boundary = d_center - env.resolution / 2
+collide = d_boundary &lt; vehicle_radius      # 0.15 m</pre>
+  <p><b>Bước 4:</b> test PASS → chạy lại <code>--batch --save-results</code> → so bảng collision trước/sau → 2 bảng này chính là bằng chứng "metric trước/sau khi sửa" trong báo cáo.</p>
+  <h4>Thêm metric safety_margin_violations (~1h)</h4>
+  <ul>
+    <li>Trong <code>evaluation/metrics.py</code>: đếm số bước có <code>min_obstacle_distance &lt; margin</code> (margin đọc từ config, mặc định 0.3 m)</li>
+    <li>Khác collision_count: collision = "đã chạm", safety_margin = "đã vào vùng nguy hiểm" — metric nhạy hơn, hữu ích khi so variant</li>
+  </ul>
+  <h4>Chạy lại batch + notebook phân tích (~1h)</h4>
+  <ul>
+    <li>Sau GAP-1 mọi bảng cũ lỗi thời — chạy lại và thông báo cả nhóm</li>
+    <li>Tạo <code>analysis/batch_analysis.ipynb</code>: pandas đọc batch_results.csv → bảng tổng hợp + bar chart RMSE/collision theo variant → dùng luôn cho slide</li>
+  </ul>
+</div>
+
+<div class="detail-data" id="jm5" data-title="M5 — Hướng dẫn chi tiết công việc">
+  <h4>Bạn là ai trong nhóm</h4>
+  <p>Chủ nhân bước 7 — tầng "AI" của dự án. Việc của bạn: biến rule-based agent thành LLM agent, và giữ cho nó <b>không thể phá hệ thống</b> nhờ MCP.</p>
+  <h4>Tool mới <code>get_scenario_info</code> (~1.5h)</h4>
+  <ol>
+    <li>Thêm vào <code>mcp_server/server.py</code> tool trả về: kích thước map, start/goal, số vật cản, độ dài quỹ đạo tham chiếu</li>
+    <li>Validate đầu vào (scenario name phải tồn tại) — bắt chước pattern của các tool có sẵn</li>
+    <li>Test thủ công qua MCP client, rồi thêm pytest test gọi tool</li>
+  </ol>
+  <h4>GAP-8 — LLM agent (~6h) — kết quả NCKH thứ 3</h4>
+  <p><b>Bước 1:</b> xem <code>agent/prompts.py</code> — <code>build_prompt()</code> đã sinh prompt hoàn chỉnh (metrics + scenario + danh sách hành động hợp lệ), nhưng chưa ai gọi LLM với nó.</p>
+  <p><b>Bước 2:</b> thêm <code>agent/llm_suggest.py</code>:</p>
+  <pre>def suggest_with_llm(prompt: str):
+    key = os.environ.get("LLM_API_KEY")
+    if not key: return None            # không có key → fallback rule-based
+    resp = call_llm_api(prompt, key)   # yêu cầu trả JSON thuần
+    try: return json.loads(resp)
+    except json.JSONDecodeError: return None   # LLM nói nhăng nhố → fallback</pre>
+  <p><b>Bước 3:</b> trong <code>agent_loop.py</code>: thử LLM trước, nhận <code>None</code> → dùng rule engine cũ. <b>MCP validation luôn chạy sau cùng</b> — LLM đề xuất gì đi nữa, config nguy hiểm vẫn bị chặn.</p>
+  <p><b>Bước 4 — thí nghiệm so sánh (cùng scenario obstacles, max 10 trials):</b></p>
+  <pre>python agent/run_agent.py --scenario obstacles --max-trials 10                 # rule-based
+set LLM_API_KEY=... && python agent/run_agent.py --scenario obstacles --max-trials 10  # LLM</pre>
+  <p>Đo: số trial để đạt goal, tổng thời gian, số lần đề xuất bị MCP từ chối → bảng so sánh = kết quả NCKH thứ 3.</p>
+  <div class="warn"><b>⚠️ Chú ý chi phí + bảo mật:</b> mỗi trial = 1 lần gọi LLM API. Set <code>--max-trials</code> thấp khi test. KHÔNG commit API key vào repo — dùng biến môi trường.</div>
+  <h4>Doc 1 trang flow agent (~1h)</h4>
+  <p>Sơ đồ hộp-mũi-tên: <code>GOAL → [agent] → build_prompt → (LLM | rule) → config → [MCP validate] → pipeline → metrics → về [agent]</code>. Vẽ bằng draw.io hoặc PowerPoint là đủ — GV sẽ xem trang này đầu tiên khi hỏi phần agent.</p>
+</div>
+
+<div class="detail-data" id="p0" data-title="PLAN · Ngày 1 — Cài máy từng bước">
+  <h4>Checklist cài máy (Windows)</h4>
+  <pre>git clone https://github.com/hieutachi/mpc-agentic-robotics.git
+cd mpc-agentic-robotics
+python -m venv venv
+venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+$env:PYTHONIOENCODING = "utf-8"
+pytest planner controller simulator evaluation mcp_server -v</pre>
+  <h4>Tiêu chí "cài xong" — phải đạt cả 3</h4>
+  <ol>
+    <li><code>pytest</code> hiện <b>45 passed</b> (không có failed/error)</li>
+    <li><code>python run_pipeline.py --scenario basic_circle --save-plot</code> tạo ra hình quỹ đạo, mở lên nhìn thấy robot đi từ start → goal</li>
+    <li>Mỗi người tạo branch riêng <code>git checkout -b ten-minh</code> và push thử 1 commit lên GitHub (làm quen workflow PR ngay từ đầu)</li>
+  </ol>
+  <h4>Lỗi thường gặp</h4>
+  <ul>
+    <li><b>cvxpy cài lỗi / chậm:</b> dùng <code>pip install cvxpy</code> trong venv mới, KHÔNG cài global; nếu lỗi OSQP binary → <code>pip install --upgrade osqp</code></li>
+    <li><b>UnicodeDecodeError khi chạy:</b> quên <code>$env:PYTHONIOENCODING = "utf-8"</code></li>
+    <li><b>PowerShell chặn Activate.ps1:</b> chạy 1 lần <code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code></li>
+  </ul>
+</div>
+
+<div class="detail-data" id="p12" data-title="PLAN · Tuần 1–2 — MPC cơ bản (M3 dẫn dắt)">
+  <h4>Mục tiêu 2 tuần này</h4>
+  <p>Cả nhóm hiểu <b>toàn bộ bước 4 trong FLOW</b> (MPC) ở mức có thể tự viết lại trên giấy: mô hình xe → hàm chi phí → ràng buộc → QP → receding horizon.</p>
+  <h4>Notebook 02 — các mục phải có</h4>
+  <ol>
+    <li>Mô hình bicycle 4 phương trình (copy từ <code>controller/vehicle_model.py</code>, giải thích từng dòng)</li>
+    <li>Minh họa: từ state + [steer, accel] → vị trí kế tiếp (vẽ mũi tên)</li>
+    <li>Xây hàm chi phí MPC với numpy, giải QP bằng CVXPY cho 1 bước</li>
+    <li>Bài tập horizon: chạy N = 5 / 10 / 20, bảng RMSE + thời gian giải</li>
+  </ol>
+  <h4>Bài tập cả nhóm — đổi horizon, ghi RMSE</h4>
+  <pre>python run_pipeline.py --scenario basic_circle --horizon 5
+python run_pipeline.py --scenario basic_circle --horizon 10
+python run_pipeline.py --scenario basic_circle --horizon 20</pre>
+  <p>(Nếu flag <code>--horizon</code> chưa có — đó chính là GAP-4 của M1, bạn có thể sửa file YAML tạm thời. Ghi kết quả vào bảng chung.)</p>
+  <h4>M1 song song — GAP-7 pin versions</h4>
+  <p>Việc nhỏ, xong ngay trong tuần 1 để môi trường cả nhóm đồng bộ — xem hướng dẫn trong tab JOB → M1.</p>
+</div>
+
+<div class="detail-data" id="p34" data-title="PLAN · Tuần 3–4 — A* + trajectory (M2 dẫn dắt)">
+  <h4>Mục tiêu 2 tuần này</h4>
+  <p>Hiểu bước 1–3 trong FLOW: bản đồ biểu diễn thế nào, A* tìm đường ra sao, quỹ đạo cần gì để MPC bám được.</p>
+  <h4>Notebook 01 + 03 — các mục phải có</h4>
+  <ol>
+    <li><b>NB01 — Grid &amp; heuristic:</b> vẽ grid từ YAML bằng matplotlib imshow; tính khoảng cách Euclidean/Manhattan giữa 2 ô; giải thích vì sao heuristic admissible</li>
+    <li><b>NB03 — A* chạy tay:</b> chạy A* trên grid 10×10 với vật cản tự vẽ; in ra số node mở rộng; đổi start/goal thấy thứ tự thăm ô đổi thế nào</li>
+    <li>Tự tạo 1 map mới (YAML) — bài tập bắt buộc, sẽ được test của GAP-2 kiểm tra</li>
+  </ol>
+  <h4>Checkpoint cuối tuần 4</h4>
+  <ul>
+    <li>✅ M2: GAP-2 test map merge vào main — bug YAML từ giờ không lọt qua được nữa</li>
+    <li>✅ M1: GAP-3 + GAP-4 merge — batch runner ổn định + CLI variant dùng được</li>
+    <li>➡️ Chuẩn bị sang tuần 5–6: nghĩ trước câu hỏi "số liệu batch hiện tại đáng tin không?"</li>
+  </ul>
+</div>
+
+<div class="detail-data" id="p56" data-title="PLAN · Tuần 5–6 — Simulation &amp; metrics (M4 dẫn dắt)">
+  <h4>Mục tiêu 2 tuần này</h4>
+  <p>Trả lời được câu hỏi: <b>"Con số trong batch_results.csv hiện tại có đáng tin không?"</b> — và làm cho nó đáng tin.</p>
+  <h4>Notebook 04 — các mục phải có</h4>
+  <ol>
+    <li>Đọc <code>batch_results.csv</code> bằng pandas — describe() từng cột</li>
+    <li>Vẽ bar chart RMSE và collision theo (scenario × variant)</li>
+    <li>Vẽ <code>min_obstacle_distance</code> theo thời gian cho 1 run (từ file log của <code>--save-log</code>)</li>
+    <li>Thảo luận trong notebook: cột collision này được tính thế nào? Đọc <code>check_collision()</code> và chỉ ra ngưỡng 0.4 m</li>
+  </ol>
+  <h4>Sự kiện quan trọng nhất của giai đoạn: GAP-1 xong</h4>
+  <p>Khi M4 merge GAP-1 (metric sửa đúng), <b>toàn bộ batch phải chạy lại</b> — số collision của corridor/obstacles sẽ giảm mạnh so với bảng cũ. Đó là lúc cả nhóm đặt tên lại kết quả: "đợt 1 (số thô)" vs "đợt 2 (số sạch)". Bảng so trước/sau chính là minh họa hay nhất về "tại sao phải kiểm định metric" — đưa luôn vào slide.</p>
+  <h4>M3 song song — bắt đầu GAP-5</h4>
+  <p>Xuất phát từ chính dữ liệu đợt 2 mới sạch: aggressive vs baseline ở corridor — xem hướng dẫn chi tiết trong tab JOB → M3.</p>
+</div>
+
+<div class="detail-data" id="p78" data-title="PLAN · Tuần 7–8 — Agent &amp; MCP (M5 dẫn dắt)">
+  <h4>Mục tiêu 2 tuần này</h4>
+  <p>Hiểu vòng lặp agent end-to-end và nâng cấp nó thành LLM agent (GAP-8) — phần "hợp thời" nhất của dự án khi thuyết trình.</p>
+  <h4>Notebook 05 — các mục phải có</h4>
+  <ol>
+    <li>Chạy <code>agent/run_agent.py --scenario obstacles --max-trials 5</code> — giải thích từng dòng log (trial, action)</li>
+    <li>Mở <code>agent/agent_loop.py</code> — vẽ lưu đồ vòng lặp ra giấy</li>
+    <li>Mở <code>agent/prompts.py</code> — in prompt <code>build_prompt()</code> sinh ra, đọc thử: nếu bạn là LLM, bạn sẽ đề xuất config gì?</li>
+    <li>Mở <code>mcp_server/server.py</code> — liệt kê 5 tool, thử đưa config sai (max_steps=-5) xem validator chặn thế nào</li>
+  </ol>
+  <h4>Checkpoint cuối tuần 8</h4>
+  <ul>
+    <li>✅ M5: tool <code>get_scenario_info</code> + GAP-8 (LLM agent có fallback) merge</li>
+    <li>✅ M3: GAP-5 xong — biểu đồ min_dist theo thời gian + kết luận aggressive_safe</li>
+    <li>➡️ Bàn giao sang giai đoạn nghiên cứu sâu: mỗi người chọn 1 GAP chính thức</li>
+  </ul>
+</div>
+
+<div class="detail-data" id="p910" data-title="PLAN · Tuần 9–10 — Nghiên cứu sâu">
+  <h4>Nguyên tắc giai đoạn này: mỗi người 1 GAP, độc lập nhưng đồng bộ</h4>
+  <table>
+    <tr><th>Người</th><th>GAP chính</th><th>Đầu ra cuối cùng</th></tr>
+    <tr><td>M2</td><td>GAP-6 Dijkstra so sánh</td><td>Bảng node mở rộng + thời gian A* vs Dijkstra trên 3 map</td></tr>
+    <tr><td>M3</td><td>Ràng buộc vật cản vào QP</td><td>Variant CH-MPC: collision giảm so với aggressive, RMSE tương đương</td></tr>
+    <tr><td>M1</td><td>Tổng hợp</td><td>Repository sạch: mọi GAP merge, README cập nhật, tag v1.0</td></tr>
+    <tr><td>M4</td><td>Biểu đồ báo cáo</td><td>Bộ 5–7 hình chất lượng xuất bản (vector, nhãn tiếng Việt rõ)</td></tr>
+    <tr><td>M5</td><td>Demo agent LLM</td><td>1 script demo chạy live 3 phút: agent tự tinh chỉnh trước mặt người nghe</td></tr>
+  </table>
+  <h4>Nhịp làm việc khuyến nghị</h4>
+  <ul>
+    <li>Họp 30 phút đầu tuần: mỗi người trình bày tiến độ bằng 3 câu (đã có gì / thiếu gì / cần ai giúp)</li>
+    <li>PR nhỏ và sớm — đừng đợi "làm hết rồi mới push"</li>
+    <li>Khóa branch main bằng rule "45 test pass mới merge" (M1 thiết lập trên GitHub Settings)</li>
+  </ul>
+</div>
+
+<div class="detail-data" id="p1112" data-title="PLAN · Tuần 11–12 — Viết báo cáo + slide">
+  <h4>3 kết quả chính của nghiên cứu — bộ khung báo cáo</h4>
+  <ol>
+    <li><b>Phát hiện + sửa lỗi metric (GAP-1):</b> chỉ ra false-positive của ngưỡng tâm ô, chứng minh bằng test trước/sau và bảng batch trước/sau. Bài học phương pháp luận: "số liệu phải được kiểm định trước khi rút kết luận".</li>
+    <li><b>Phân tích trade-off Q/R (GAP-5 + quét horizon):</b> aggressive bám tốt nhưng không an toàn; conservative ngược lại; đề xuất aggressive_safe + điểm ngọt horizon. Kèm biểu đồ min_obstacle_distance theo thời gian.</li>
+    <li><b>Agent rule-based vs LLM (GAP-8):</b> bảng số trial đạt goal, thời gian, số đề xuất bị MCP chặn. Kết luận về vai trò của lớp validation khi dùng LLM trong vòng lặp điều khiển.</li>
+  </ol>
+  <h4>Cấu trúc slide gợi ý (12–15 slide)</h4>
+  <ol>
+    <li>Đề bài + ảnh động 1 vòng pipeline (dùng hình <code>--save-plot</code>)</li>
+    <li>Kiến trúc: FLOW 7 bước (chụp đúng trang FLOW của site này)</li>
+    <li>MPC: hàm chi phí + ràng buộc (1 slide công thức, 1 slide giải thích receding horizon)</li>
+    <li>Kết quả 1/2/3 — mỗi kết quả: biểu đồ + 3 gạch đầu dòng</li>
+    <li>Demo live: chạy <code>run_pipeline.py --save-plot</code> + agent tự tinh chỉnh 2–3 trials</li>
+    <li>Hạn chế + hướng phát triển (map động, MPC nonlinear thật, LLM nhiều agent)</li>
+  </ol>
+  <h4>Checklist trước buổi bảo vệ</h4>
+  <ul>
+    <li>Demo live đã chạy trơn trên máy phòng chiếu (test trước ít nhất 1 lần, tải trước các package)</li>
+    <li>Link site hướng dẫn đưa vào slide cuối — GV mở thấy toàn bộ board</li>
+    <li>Mỗi người chuẩn bị trả lời 3 câu hỏi sâu về phần mình sở hữu trong FLOW</li>
+  </ul>
+</div>
+
+
+
+
+
+
+
 
 <!-- ============ JOBS ============ -->
 <section id="jobs">
@@ -204,6 +722,7 @@ footer a{color:#93c5fd}
       <li>Review + merge PR của cả nhóm, giữ gate: 45 test pass</li>
     </ul></div>
   </div></div>
+  <div class="m-foot"><button class="mo-btn" data-detail="jm1">📋 Hướng dẫn chi tiết công việc của M1</button></div>
 </div>
 
 <!-- M2 -->
@@ -223,6 +742,7 @@ footer a{color:#93c5fd}
       <li><b>GAP-6:</b> cài Dijkstra (heuristic=0) so sánh độ dài đường + thời gian với A*</li>
     </ul></div>
   </div></div>
+  <div class="m-foot"><button class="mo-btn" data-detail="jm2">📋 Hướng dẫn chi tiết công việc của M2</button></div>
 </div>
 
 <!-- M3 -->
@@ -242,6 +762,7 @@ footer a{color:#93c5fd}
       <li>Nâng cao: thêm ràng buộc khoảng cách vật cản vào QP (soft constraint)</li>
     </ul></div>
   </div></div>
+  <div class="m-foot"><button class="mo-btn" data-detail="jm3">📋 Hướng dẫn chi tiết công việc của M3</button></div>
 </div>
 
 <!-- M4 -->
@@ -261,6 +782,7 @@ footer a{color:#93c5fd}
       <li>Chạy lại batch sau khi sửa → cập nhật mọi bảng/biểu đồ báo cáo</li>
     </ul></div>
   </div></div>
+  <div class="m-foot"><button class="mo-btn" data-detail="jm4">📋 Hướng dẫn chi tiết công việc của M4</button></div>
 </div>
 
 <!-- M5 -->
@@ -280,6 +802,7 @@ footer a{color:#93c5fd}
       <li>Viết doc 1 trang: flow goal → agent → tool → metrics kèm hình</li>
     </ul></div>
   </div></div>
+  <div class="m-foot"><button class="mo-btn" data-detail="jm5">📋 Hướng dẫn chi tiết công việc của M5</button></div>
 </div>
 </section>
 
@@ -298,7 +821,7 @@ footer a{color:#93c5fd}
       <p>Ngưỡng hiện tại: <code>radius 0.15 + resolution/2 0.25 = 0.4 m</code> tính tới <b>tâm ô</b> vật cản.</p>
       <ol><li>Trong <code>check_collision()</code>: đổi so sánh khoảng cách tới <b>biên ô</b> gần nhất thay vì tâm ô (trừ thêm resolution/2).</li>
       <li>Thêm metric mới <code>safety_margin_violations</code>: đếm số bước có min_obstacle_distance &lt; margin (cấu hình được, vd 0.3 m).</li>
-      <li>Chạy lại <code>--batch --save-results</code>, so sánh collision trước/sau — this là kết quả nghiên cứu đầu tiên của nhóm.</li></ol>
+      <li>Chạy lại <code>--batch --save-results</code>, so sánh collision trước/sau — đây là kết quả nghiên cứu đầu tiên của nhóm.</li></ol>
     </details>
   </div>
 
@@ -380,35 +903,35 @@ footer a{color:#93c5fd}
 </div>
 <div class="tl">
 
-  <div class="tl-item"><div class="when">Ngày 1</div><h3>⚙️ Mỗi người cài máy</h3>
+  <div class="tl-item clickable" data-detail="p0"><div class="when">Ngày 1</div><h3>⚙️ Mỗi người cài máy</h3>
     <ul><li>Clone repo → venv → <code>pip install -r requirements.txt</code></li>
     <li>Chạy <code>pytest</code> đủ 45 passed → chạy <code>run_pipeline.py --scenario basic_circle</code></li></ul></div>
 
-  <div class="tl-item"><div class="when">Tuần 1–2</div><h3>🎮 M3 dẫn dắt — MPC cơ bản</h3>
+  <div class="tl-item clickable" data-detail="p12"><div class="when">Tuần 1–2</div><h3>🎮 M3 dẫn dắt — MPC cơ bản</h3>
     <ul><li>Cả nhóm làm notebook 02 (mô hình xe + CVXPY)</li>
     <li>Bài tập: đổi horizon 5/10/20 → ghi RMSE</li>
     <li><b>M1 song song:</b> xong GAP-7 (pin versions)</li></ul></div>
 
-  <div class="tl-item"><div class="when">Tuần 3–4</div><h3>🧭 M2 dẫn dắt — A* + trajectory</h3>
+  <div class="tl-item clickable" data-detail="p34"><div class="when">Tuần 3–4</div><h3>🧭 M2 dẫn dắt — A* + trajectory</h3>
     <ul><li>Cả nhóm làm notebook 01 + 03, tự tạo 1 map mới</li>
     <li><b>M2:</b> xong GAP-2 (regression test) — P0</li>
     <li><b>M1 song song:</b> xong GAP-3 + GAP-4</li></ul></div>
 
-  <div class="tl-item"><div class="when">Tuần 5–6</div><h3>📊 M4 dẫn dắt — Simulation &amp; metrics</h3>
+  <div class="tl-item clickable" data-detail="p56"><div class="when">Tuần 5–6</div><h3>📊 M4 dẫn dắt — Simulation &amp; metrics</h3>
     <ul><li>Cả nhóm notebook 04, phân tích batch_results.csv bằng pandas</li>
     <li><b>M4:</b> xong GAP-1 (P0) → chạy lại toàn bộ batch → số liệu "sạch" cho báo cáo</li>
     <li><b>M3 song song:</b> bắt đầu GAP-5 (phân tích aggressive)</li></ul></div>
 
-  <div class="tl-item"><div class="when">Tuần 7–8</div><h3>🤖 M5 dẫn dắt — Agent &amp; MCP</h3>
+  <div class="tl-item clickable" data-detail="p78"><div class="when">Tuần 7–8</div><h3>🤖 M5 dẫn dắt — Agent &amp; MCP</h3>
     <ul><li>Cả nhóm notebook 05, hiểu vòng lặp goal→agent→tool→metrics</li>
     <li><b>M5:</b> tool mới + GAP-8 (LLM agent)</li>
     <li><b>M3:</b> hoàn thành GAP-5 + quét horizon</li></ul></div>
 
-  <div class="tl-item"><div class="when">Tuần 9–10</div><h3>🔬 Nghiên cứu sâu — mỗi người 1 GAP</h3>
+  <div class="tl-item clickable" data-detail="p910"><div class="when">Tuần 9–10</div><h3>🔬 Nghiên cứu sâu — mỗi người 1 GAP</h3>
     <ul><li>M2: GAP-6 (Dijkstra so sánh) · M3: ràng buộc va chạm vào QP</li>
     <li>M1: tổng hợp kết quả · M4: biểu đồ báo cáo · M5: demo agent LLM</li></ul></div>
 
-  <div class="tl-item"><div class="when">Tuần 11–12</div><h3>📝 Viết báo cáo + slide</h3>
+  <div class="tl-item clickable" data-detail="p1112"><div class="when">Tuần 11–12</div><h3>📝 Viết báo cáo + slide</h3>
     <ul><li>3 kết quả chính: metric sửa sai (GAP-1) · trade-off Q/R (GAP-5) · agent LLM vs rule-based (GAP-8)</li>
     <li>Demo live: pipeline + agent tự tinh chỉnh</li></ul></div>
 
@@ -448,6 +971,14 @@ $env:PYTHONIOENCODING = "utf-8"</pre>
   <a href="https://github.com/hieutachi/mpc-agentic-robotics">GitHub</a> · chi tiết kỹ thuật trong <a href="https://github.com/hieutachi/mpc-agentic-robotics#readme">README</a> và <code style="color:#93c5fd">docs/</code>
 </footer>
 
+<!-- MODAL OVERLAY -->
+<div class="modal-ov" id="modal">
+  <div class="modal">
+    <div class="mo-head"><h3 id="mo-title">Chi tiết</h3><button class="mo-close" id="mo-x" aria-label="Đóng">✕</button></div>
+    <div class="mo-body" id="mo-body"></div>
+  </div>
+</div>
+
 <script>
 // Tabs thành viên
 document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -458,6 +989,37 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.getElementById(btn.dataset.t).classList.add('on');
   });
 });
+
+// Modal chi tiết
+const modal = document.getElementById('modal'),
+      moBody = document.getElementById('mo-body'),
+      moTitle = document.getElementById('mo-title');
+
+function openModal(id) {
+  const src = document.getElementById(id);
+  if (!src) return;
+  moBody.innerHTML = '';
+  while (src.firstChild) moBody.appendChild(src.firstChild);
+  moTitle.textContent = src.dataset.title || 'Chi tiết';
+  modal.classList.add('on');
+  document.body.style.overflow = 'hidden';
+  modal.scrollTop = 0;
+}
+function closeModal() {
+  modal.classList.remove('on');
+  document.body.style.overflow = '';
+}
+document.addEventListener('click', e => {
+  const trig = e.target.closest('[data-detail]');
+  if (trig) {
+    e.stopPropagation();
+    openModal(trig.dataset.detail);
+    return;
+  }
+  if (e.target.closest('.mo-close')) closeModal();
+  else if (e.target === modal) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
 
 
