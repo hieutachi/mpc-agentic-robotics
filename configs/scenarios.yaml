@@ -11,7 +11,7 @@ basic_circle:
 corridor:
   map: "maps/corridor_30x10.yaml"
   start: [1, 1]
-  goal: [28, 8]
+  goal: [8, 28]   # (row, col) convention
   description: "Navigation through a narrow corridor"
   mpc_config: "configs/mpc_baseline.yaml"
 

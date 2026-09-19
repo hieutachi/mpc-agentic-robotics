@@ -9,7 +9,11 @@ Usage:
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+# Allow running this script directly: python agent/run_agent.py
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from agent.agent_loop import AgentLoop
 from mcp_server.server import MCPServer
